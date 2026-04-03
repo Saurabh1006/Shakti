@@ -1,2 +1,0 @@
-# Shakti
-Women empowerment 
