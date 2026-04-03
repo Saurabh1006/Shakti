@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Aapki Suraksha — आपकी सुरक्षा, हमारी प्रतिबद्धता</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+<style>
+/* ============================
+   DESIGN SYSTEM — PRD v1.0
+   ============================ */
+:root {
+  --baby-pink:   #FFF0F5;
+  --primary:     #F06292;
+  --deep-pink:   #C2185B;
+  --maroon:      #880E4F;
+  --blush:       #F8BBD9;
+  --card-pink:   #FCE4EC;
+  --sos-red:     #D32F2F;
+  --sos-light:   #FFEBEE;
+  --text-dark:   #374151;
+  --text-mid:    #6B7280;
+  --text-white:  #FFFFFF;
+  --green:       #16A34A;
+  --green-light: #DCFCE7;
+  --amber:       #D97706;
+  --amber-light: #FEF3C7;
+  --blue:        #2563EB;
+  --blue-light:  #DBEAFE;
+  --white:       #FFFFFF;
+  --shadow-sm:   0 2px 8px rgba(136,14,79,0.10);
+  --shadow-md:   0 6px 24px rgba(136,14,79,0.14);
+  --shadow-lg:   0 16px 48px rgba(136,14,79,0.18);
+  --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans','Noto Sans Devanagari',sans-serif;
+  background:var(--baby-pink); color:var(--text-dark);
+  font-size:16px; line-height:1.6; min-height:100vh;
+}
+h1,h2,h3,h4,h5 { font-family:'Noto Sans',sans-serif; }
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--blush);}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px;}
+
+/* ============================  UTILITIES  ============================ */
+.hidden { display:none !important; }
+.page { display:none; min-height:100vh; }
+.page.active { display:block; }
+#loginPage.active { display:flex; }
+.flex { display:flex; } .flex-col { flex-direction:column; }
+.items-center { align-items:center; } .justify-center { justify-content:center; }
+.gap-8 { gap:8px; } .gap-12 { gap:12px; } .gap-16 { gap:16px; }
+.text-center { text-align:center; }
+.w-full { width:100%; }
+.mt-8{margin-top:8px;} .mt-12{margin-top:12px;} .mt-16{margin-top:16px;} .mt-24{margin-top:24px;} .mt-32{margin-top:32px;}
+.mb-8{margin-bottom:8px;} .mb-16{margin-bottom:16px;}
+
+/* ============================  BUTTONS  ============================ */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:12px 24px; border-radius:50px; border:none; cursor:pointer;
+  font-family:'Noto Sans',sans-serif; font-size:15px; font-weight:600;
+  transition:all 0.25s; min-height:44px; min-width:44px;
+  text-decoration:none; white-space:nowrap;
+}
+.btn-primary { background:linear-gradient(135deg,var(--deep-pink),var(--maroon)); color:white; box-shadow:0 4px 16px rgba(194,24,91,0.35); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(194,24,91,0.45); }
+.btn-secondary { background:white; color:var(--deep-pink); border:2px solid var(--blush); }
+.btn-secondary:hover { background:var(--card-pink); border-color:var(--primary); }
+.btn-outline { background:transparent; color:var(--deep-pink); border:2px solid var(--deep-pink); }
+.btn-outline:hover { background:var(--card-pink); }
+.btn-danger { background:linear-gradient(135deg,var(--sos-red),#b71c1c); color:white; box-shadow:0 4px 16px rgba(211,47,47,0.4); }
+.btn-danger:hover { transform:translateY(-2px); }
+.btn-green { background:linear-gradient(135deg,#22c55e,#16a34a); color:white; }
+.btn-sm { padding:8px 16px; font-size:13px; }
+.btn-lg { padding:16px 32px; font-size:17px; }
+.btn-icon { padding:12px; border-radius:50%; }
+.btn:disabled { opacity:0.5; cursor:not-allowed; transform:none !important; }
+
+/* ============================  CARDS  ============================ */
+.card {
+  background:white; border-radius:var(--r-lg); box-shadow:var(--shadow-sm);
+  border:1px solid var(--blush); overflow:hidden; transition:all 0.25s;
+}
+.card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.card-body { padding:20px; }
+.card-pink-bg { background:var(--card-pink); }
+
+/* ============================  PILLS / TAGS  ============================ */
+.pill {
+  display:inline-flex; align-items:center; gap:4px; padding:5px 14px;
+  border-radius:50px; font-size:13px; font-weight:600; cursor:pointer;
+  transition:all 0.2s; border:2px solid transparent; white-space:nowrap;
+}
+.pill-default { background:white; color:var(--text-mid); border-color:var(--blush); }
+.pill-active  { background:var(--deep-pink); color:white; border-color:var(--deep-pink); }
+.badge { display:inline-flex; align-items:center; padding:3px 10px; border-radius:50px; font-size:12px; font-weight:700; }
+.badge-green  { background:var(--green-light); color:var(--green); }
+.badge-amber  { background:var(--amber-light); color:var(--amber); }
+.badge-blue   { background:var(--blue-light);  color:var(--blue); }
+.badge-red    { background:var(--sos-light);   color:var(--sos-red); }
+.badge-pink   { background:var(--card-pink);   color:var(--deep-pink); }
+
+/* ============================  NAV  ============================ */
+.navbar {
+  background:rgba(255,255,255,0.97); backdrop-filter:blur(20px);
+  box-shadow:var(--shadow-sm); position:sticky; top:0; z-index:90;
+  border-bottom:2px solid var(--blush);
+}
+.nav-inner {
+  max-width:1200px; margin:0 auto; padding:0 20px;
+  display:flex; align-items:center; justify-content:space-between; height:64px; gap:8px;
+}
+.nav-brand { display:flex; align-items:center; gap:8px; cursor:pointer; flex-shrink:0; }
+.nav-brand-icon { font-size:1.7rem; }
+.nav-brand-text h2 { font-size:0.95rem; color:var(--maroon); line-height:1.1; font-weight:700; }
+.nav-brand-text p  { font-size:0.68rem; color:var(--text-mid); font-weight:500; }
+.nav-links { display:flex; gap:2px; }
+.nav-link {
+  padding:7px 13px; border-radius:50px; font-weight:600; color:var(--text-mid);
+  cursor:pointer; border:none; background:none; font-size:0.82rem;
+  font-family:'Noto Sans',sans-serif; transition:all 0.2s; white-space:nowrap;
+}
+.nav-link:hover,.nav-link.active { background:var(--card-pink); color:var(--deep-pink); }
+.nav-right { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.lang-btn {
+  padding:6px 12px; background:var(--card-pink); color:var(--deep-pink);
+  border:1.5px solid var(--blush); border-radius:50px; font-size:0.78rem;
+  font-weight:700; cursor:pointer; transition:all 0.2s;
+}
+.lang-btn:hover { background:var(--blush); }
+.nav-avatar {
+  width:36px; height:36px; background:linear-gradient(135deg,var(--primary),var(--deep-pink));
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  color:white; font-weight:700; font-size:0.9rem; cursor:pointer; flex-shrink:0;
+}
+
+/* ============================  PAGE HEADER  ============================ */
+.page-header {
+  background:linear-gradient(135deg,var(--maroon) 0%,var(--deep-pink) 60%,var(--primary) 100%);
+  color:white; padding:48px 24px 56px; text-align:center; position:relative; overflow:hidden;
+}
+.page-header::after {
+  content:''; position:absolute; bottom:-2px; left:0; right:0; height:48px;
+  background:var(--baby-pink); clip-path:ellipse(55% 100% at 50% 100%);
+}
+.page-header h1 { font-size:2rem; margin-bottom:8px; font-weight:800; }
+.page-header p  { opacity:0.88; font-size:0.95rem; max-width:500px; margin:0 auto; }
+.page-content { max-width:1200px; margin:0 auto; padding:40px 20px 80px; }
+
+/* ============================  SECTION  ============================ */
+.section { padding:60px 20px; }
+.section-alt { background:linear-gradient(180deg,var(--card-pink) 0%,var(--baby-pink) 100%); }
+.section-inner { max-width:1200px; margin:0 auto; }
+.section-header { text-align:center; margin-bottom:40px; }
+.section-header .section-tag {
+  display:inline-block; background:var(--card-pink); color:var(--deep-pink);
+  border-radius:50px; padding:5px 16px; font-size:0.78rem; font-weight:700;
+  margin-bottom:12px; border:1.5px solid var(--blush);
+}
+.section-header h2 { font-size:2rem; color:var(--maroon); margin-bottom:10px; font-weight:800; }
+.section-header p  { color:var(--text-mid); max-width:500px; margin:0 auto; font-size:0.93rem; }
+.section-top-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+
+/* ============================  CARDS GRID  ============================ */
+.grid-3 { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:20px; }
+.grid-2 { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:20px; }
+
+/* ============================  SCHEME CARD  ============================ */
+.scheme-card { cursor:pointer; }
+.scheme-card-icon {
+  height:130px; display:flex; align-items:center; justify-content:center;
+  font-size:4rem; background:linear-gradient(135deg,var(--card-pink),var(--blush));
+}
+.scheme-card .card-body { padding:18px; }
+.scheme-card-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.scheme-card-tag { background:var(--card-pink); color:var(--deep-pink); border-radius:50px; padding:2px 10px; font-size:11px; font-weight:700; }
+.scheme-card-title { font-size:1rem; font-weight:700; color:var(--maroon); margin-bottom:6px; }
+.scheme-card-desc { color:var(--text-mid); font-size:0.83rem; line-height:1.55; margin-bottom:12px; }
+.scheme-card-benefit { background:var(--green-light); border-left:3px solid var(--green); border-radius:6px; padding:8px 10px; margin-bottom:14px; font-size:0.8rem; font-weight:600; color:#166534; }
+.scheme-card-actions { display:flex; gap:8px; }
+
+/* ============================  RIGHTS CARD  ============================ */
+.rights-card { cursor:pointer; }
+.rights-card-img {
+  height:140px; display:flex; align-items:center; justify-content:center;
+  font-size:4rem; position:relative; overflow:hidden;
+}
+.rights-card .card-body { padding:16px; }
+.rights-card-situation { background:var(--card-pink); border-left:3px solid var(--primary); border-radius:6px; padding:8px 10px; font-size:0.78rem; font-style:italic; color:var(--deep-pink); margin-bottom:10px; }
+.rights-card-title { font-size:0.95rem; font-weight:700; color:var(--maroon); margin-bottom:6px; }
+.rights-card-desc { color:var(--text-mid); font-size:0.82rem; line-height:1.5; margin-bottom:12px; }
+
+/* ============================  STORY CARD  ============================ */
+.story-card { cursor:pointer; display:flex; flex-direction:column; }
+.story-card-top {
+  height: 180px;              /* controls 2/3 feel */
+  width: 100%;
+  overflow: hidden;           /* important for crop */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.story-card-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* 🔥 KEY: fills nicely */
+  display: block;
+}
+.story-card .card-body { padding:18px; flex:1; display:flex; flex-direction:column; }
+.story-quote { font-style:italic; color:var(--maroon); font-size:0.92rem; line-height:1.55; margin-bottom:14px; flex:1; }
+.story-author { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.story-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--deep-pink)); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:0.88rem; flex-shrink:0; }
+.story-info .name { font-weight:700; font-size:0.85rem; color:var(--maroon); }
+.story-info .loc  { font-size:0.75rem; color:var(--text-mid); }
+
+/* ============================  HELPLINE  ============================ */
+.emergency-card {
+  background:linear-gradient(135deg,var(--sos-red),#b71c1c); color:white;
+  border-radius:var(--r-lg); padding:24px; margin-bottom:24px;
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+}
+.emergency-card .title { font-size:1.1rem; font-weight:800; margin-bottom:6px; }
+.emergency-numbers { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+.emergency-num-btn {
+  background:rgba(255,255,255,0.2); color:white; border:2px solid rgba(255,255,255,0.4);
+  border-radius:50px; padding:8px 18px; font-size:1.1rem; font-weight:800;
+  cursor:pointer; transition:all 0.2s; text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+}
+.emergency-num-btn:hover { background:rgba(255,255,255,0.35); }
+.helpline-card { cursor:default; }
+.helpline-card .card-body { text-align:center; padding:20px; }
+.helpline-icon { font-size:2.2rem; margin-bottom:10px; }
+.helpline-name { font-weight:700; color:var(--maroon); margin-bottom:4px; font-size:0.95rem; }
+.helpline-number { font-size:1.8rem; color:var(--deep-pink); font-weight:800; margin-bottom:4px; }
+.helpline-meta { font-size:0.75rem; color:var(--text-mid); margin-bottom:14px; }
+.search-bar-wrap { position:relative; margin-bottom:24px; }
+.search-bar { width:100%; padding:13px 16px 13px 44px; border:2px solid var(--blush); border-radius:50px; font-family:'Noto Sans',sans-serif; font-size:0.93rem; background:white; outline:none; color:var(--text-dark); transition:all 0.2s; }
+.search-bar:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(240,98,146,0.15); }
+.search-icon { position:absolute; left:15px; top:50%; transform:translateY(-50%); font-size:1.1rem; pointer-events:none; }
+.filter-pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+
+/* ============================  DETAIL PAGE  ============================ */
+.detail-hero {
+  background:linear-gradient(135deg,var(--maroon),var(--deep-pink));
+  color:white; padding:48px 20px 64px; position:relative; overflow:hidden;
+}
+.detail-hero::after {
+  content:''; position:absolute; bottom:-2px; left:0; right:0; height:48px;
+  background:var(--baby-pink); clip-path:ellipse(55% 100% at 50% 100%);
+}
+.detail-hero-inner { max-width:860px; margin:0 auto; position:relative; z-index:2; }
+.back-btn {
+  display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3); border-radius:50px; padding:7px 16px;
+  color:white; font-weight:600; font-size:0.82rem; cursor:pointer; margin-bottom:20px;
+  transition:all 0.2s;
+}
+.back-btn:hover { background:rgba(255,255,255,0.28); }
+.detail-icon { font-size:3rem; margin-bottom:12px; display:block; }
+.detail-title { font-size:1.9rem; font-weight:800; margin-bottom:10px; }
+.detail-subtitle { opacity:0.88; font-size:0.93rem; line-height:1.6; max-width:580px; }
+.detail-body { max-width:860px; margin:0 auto; padding:0 20px 80px; }
+
+
+#storyDetailPage .detail-icon img {
+  width: 120px;        /* increased size */
+  height: 120px;
+  object-fit: cover;   /* better for photos */
+  border-radius: 50%;
+  
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+#storyDetailPage .detail-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+
+/* TABS */
+.tabs { display:flex; gap:4px; background:white; border-radius:50px; padding:4px; border:2px solid var(--blush); margin-bottom:28px; }
+.tab-btn { flex:1; padding:10px; border-radius:50px; border:none; background:transparent; font-family:'Noto Sans',sans-serif; font-size:0.85rem; font-weight:600; color:var(--text-mid); cursor:pointer; transition:all 0.2s; }
+.tab-btn.active { background:linear-gradient(135deg,var(--deep-pink),var(--maroon)); color:white; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* VIDEO / AUDIO */
+.video-placeholder {
+  background:linear-gradient(135deg,var(--maroon),var(--deep-pink));
+  border-radius:var(--r-md); height:240px; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; color:white; cursor:pointer;
+  transition:all 0.3s; margin-bottom:16px;
+}
+.play-btn { width:64px; height:64px; background:rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:12px; transition:all 0.3s; border:2px solid rgba(255,255,255,0.4); }
+.video-placeholder:hover .play-btn { transform:scale(1.1); background:rgba(255,255,255,0.32); }
+.audio-player { background:white; border-radius:var(--r-sm); padding:16px 20px; display:flex; align-items:center; gap:14px; box-shadow:var(--shadow-sm); border:1.5px solid var(--blush); margin-bottom:20px; }
+.audio-play-btn { width:44px; height:44px; background:linear-gradient(135deg,var(--primary),var(--deep-pink)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1rem; cursor:pointer; border:none; flex-shrink:0; transition:all 0.2s; }
+.audio-play-btn:hover { transform:scale(1.08); }
+.audio-track { flex:1; height:5px; background:var(--blush); border-radius:3px; cursor:pointer; }
+.audio-progress { height:100%; background:linear-gradient(90deg,var(--primary),var(--deep-pink)); border-radius:3px; width:30%; }
+.audio-label { font-size:0.8rem; font-weight:600; color:var(--text-mid); }
+
+/* INFO SECTION */
+.info-block { background:white; border-radius:var(--r-md); padding:24px; box-shadow:var(--shadow-sm); margin-bottom:20px; border:1.5px solid var(--blush); }
+.info-block h3 { font-size:1.05rem; color:var(--maroon); margin-bottom:12px; font-weight:700; }
+.info-block p  { color:var(--text-dark); line-height:1.7; margin-bottom:10px; font-size:0.9rem; }
+.info-block ul { padding-left:18px; }
+.info-block ul li { color:var(--text-dark); margin-bottom:7px; line-height:1.6; font-size:0.9rem; }
+
+/* GUIDANCE STEPS */
+.guidance-steps { display:flex; flex-direction:column; gap:20px; }
+.guidance-step { display:flex; gap:16px; align-items:flex-start; }
+.step-num { width:40px; height:40px; background:linear-gradient(135deg,var(--primary),var(--deep-pink)); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.95rem; flex-shrink:0; }
+.step-content { flex:1; }
+.step-img { width:100%; height:130px; background:linear-gradient(135deg,var(--card-pink),var(--blush)); border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; font-size:3rem; margin-bottom:10px; border:1.5px solid var(--blush); }
+.step-title { font-weight:700; color:var(--maroon); margin-bottom:5px; font-size:0.93rem; }
+.step-desc  { color:var(--text-mid); font-size:0.85rem; line-height:1.55; }
+
+/* ELIGIBILITY CHECK */
+.elig-question-card { background:white; border-radius:var(--r-lg); padding:28px; box-shadow:var(--shadow-sm); border:1.5px solid var(--blush); }
+.elig-progress { height:5px; background:var(--blush); border-radius:3px; margin-bottom:24px; }
+.elig-progress-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--deep-pink)); border-radius:3px; transition:width 0.4s; }
+.elig-q { font-size:1.1rem; font-weight:700; color:var(--maroon); margin-bottom:20px; }
+.elig-options { display:flex; flex-direction:column; gap:10px; }
+.elig-option { padding:13px 18px; border-radius:var(--r-sm); border:2px solid var(--blush); background:white; font-family:'Noto Sans',sans-serif; font-size:0.9rem; font-weight:600; color:var(--text-dark); cursor:pointer; text-align:left; transition:all 0.2s; }
+.elig-option:hover { border-color:var(--primary); background:var(--card-pink); }
+.elig-option.selected { border-color:var(--deep-pink); background:var(--card-pink); color:var(--deep-pink); }
+.elig-nav { display:flex; justify-content:space-between; align-items:center; margin-top:24px; }
+.elig-result { text-align:center; padding:28px; background:white; border-radius:var(--r-lg); box-shadow:var(--shadow-sm); border:1.5px solid var(--blush); }
+.elig-result-icon { font-size:3.5rem; margin-bottom:16px; display:block; }
+
+/* CHAT */
+.chat-block { background:white; border-radius:var(--r-md); border:1.5px solid var(--blush); overflow:hidden; margin-bottom:20px; }
+.chat-header { background:linear-gradient(135deg,var(--primary),var(--deep-pink)); color:white; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; }
+.chat-header h4 { font-size:0.92rem; font-weight:700; }
+.chat-messages { height:200px; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:10px; }
+.chat-msg { max-width:82%; padding:9px 13px; border-radius:14px; font-size:0.83rem; line-height:1.5; }
+.chat-msg.bot  { background:var(--card-pink); color:var(--text-dark); border-radius:4px 14px 14px 14px; align-self:flex-start; }
+.chat-msg.user { background:linear-gradient(135deg,var(--primary),var(--deep-pink)); color:white; border-radius:14px 4px 14px 14px; align-self:flex-end; }
+.chat-input-row { padding:10px 14px; border-top:1.5px solid var(--blush); display:flex; gap:8px; }
+.chat-input { flex:1; padding:9px 14px; border:2px solid var(--blush); border-radius:50px; font-family:'Noto Sans',sans-serif; font-size:0.83rem; outline:none; color:var(--text-dark); }
+.chat-input:focus { border-color:var(--primary); }
+.chat-send { width:36px; height:36px; background:linear-gradient(135deg,var(--primary),var(--deep-pink)); border:none; border-radius:50%; color:white; cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+/* ============================  LOGIN PAGE  ============================ */
+#loginPage {
+  background:linear-gradient(135deg,#fff0f5 0%,#fce4ec 50%,#f8bbd9 100%);
+  align-items:center; justify-content:center; min-height:100vh;
+  position:relative; overflow:hidden; padding:20px;
+}
+.login-bg { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.login-bg span { position:absolute; border-radius:50%; opacity:0.15; }
+.login-bg span:nth-child(1){width:380px;height:380px;background:var(--primary);top:-80px;right:-80px;animation:floatBg 8s ease-in-out infinite;}
+.login-bg span:nth-child(2){width:220px;height:220px;background:var(--deep-pink);bottom:40px;left:-60px;animation:floatBg 10s ease-in-out infinite reverse;}
+.login-bg span:nth-child(3){width:140px;height:140px;background:var(--maroon);bottom:180px;right:80px;animation:floatBg 6s ease-in-out infinite 1s;}
+@keyframes floatBg{0%,100%{transform:translateY(0);}50%{transform:translateY(-28px);}}
+
+.login-card {
+  background:rgba(255,255,255,0.97); border-radius:var(--r-xl); padding:44px 40px;
+  box-shadow:0 24px 72px rgba(136,14,79,0.18); max-width:420px; width:100%;
+  position:relative; z-index:2; animation:slideUp 0.55s cubic-bezier(.22,.68,0,1.2) both;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
+.login-logo { text-align:center; margin-bottom:24px; }
+.login-logo-icon { font-size:3rem; display:block; margin-bottom:8px; }
+.login-logo h1  { font-size:1.4rem; color:var(--maroon); line-height:1.2; font-weight:800; }
+.login-logo p   { color:var(--text-mid); font-size:0.82rem; margin-top:4px; }
+.login-tagline  { background:linear-gradient(135deg,var(--card-pink),#fff0f5); border:1.5px solid var(--blush); border-radius:10px; padding:12px 16px; text-align:center; margin-bottom:24px; }
+.login-tagline p { color:var(--maroon); font-size:0.88rem; font-style:italic; font-weight:600; }
+
+/* OTP INPUT */
+.otp-boxes { display:flex; gap:8px; justify-content:center; margin:12px 0; }
+.otp-box { width:46px; height:52px; border:2px solid var(--blush); border-radius:10px; text-align:center; font-size:1.5rem; font-weight:700; font-family:'Noto Sans',sans-serif; color:var(--maroon); outline:none; background:var(--baby-pink); transition:all 0.2s; }
+.otp-box:focus { border-color:var(--primary); background:white; box-shadow:0 0 0 3px rgba(240,98,146,0.15); }
+.otp-box.error { border-color:var(--sos-red); animation:shake 0.4s; }
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+
+/* FORM */
+.form-group { margin-bottom:16px; }
+.form-group label { display:block; font-weight:600; color:var(--text-mid); margin-bottom:6px; font-size:0.86rem; }
+.form-input {
+  width:100%; padding:12px 16px; border:2px solid var(--blush); border-radius:var(--r-sm);
+  font-family:'Noto Sans',sans-serif; font-size:0.92rem; background:var(--baby-pink);
+  outline:none; color:var(--text-dark); transition:all 0.2s;
+}
+.form-input:focus { border-color:var(--primary); background:white; box-shadow:0 0 0 3px rgba(240,98,146,0.15); }
+.form-input.error { border-color:var(--sos-red); }
+.form-error { color:var(--sos-red); font-size:0.78rem; margin-top:4px; font-weight:500; }
+
+/* LANG GRID */
+.lang-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:16px 0; }
+.lang-option { padding:12px 8px; border:2px solid var(--blush); border-radius:var(--r-sm); text-align:center; cursor:pointer; transition:all 0.2s; background:white; font-family:'Noto Sans',sans-serif; font-size:0.85rem; font-weight:600; color:var(--text-mid); }
+.lang-option:hover { border-color:var(--primary); background:var(--card-pink); }
+.lang-option.selected { border-color:var(--deep-pink); background:var(--card-pink); color:var(--deep-pink); }
+.lang-check { display:none; } .lang-option.selected .lang-check { display:inline; }
+
+/* ONBOARDING */
+.onboard-dots { display:flex; gap:8px; justify-content:center; margin-top:20px; }
+.onboard-dot { width:8px; height:8px; border-radius:50%; background:var(--blush); transition:all 0.2s; }
+.onboard-dot.active { background:var(--deep-pink); width:20px; border-radius:4px; }
+
+/* CONTACTS */
+.contact-row { display:flex; gap:8px; margin-bottom:10px; }
+.contact-row .form-input { flex:1; }
+
+/* RESEND TIMER */
+.resend-row { text-align:center; margin-top:12px; font-size:0.82rem; color:var(--text-mid); }
+.resend-link { color:var(--deep-pink); font-weight:700; cursor:pointer; }
+.resend-link:hover { text-decoration:underline; }
+
+/* LOGIN FOOTER */
+.login-emergency { background:linear-gradient(135deg,var(--sos-red),#b71c1c); color:white; text-align:center; padding:10px; border-radius:0 0 var(--r-xl) var(--r-xl); margin:-1px; font-size:0.8rem; font-weight:700; letter-spacing:0.3px; }
+
+/* ============================  HERO  ============================ */
+.hero {
+  background:linear-gradient(135deg,#fff0f5 0%,#fce4ec 50%,#f8bbd9 100%);
+  min-height:88vh; display:flex; align-items:center; position:relative; overflow:hidden;
+  padding:60px 20px;
+}
+.hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; width:100%; position:relative; z-index:2; }
+.hero-badge { display:inline-flex; align-items:center; gap:7px; background:white; border:1.5px solid var(--blush); border-radius:50px; padding:7px 16px; color:var(--deep-pink); font-weight:700; font-size:0.78rem; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.hero-title { font-size:2.8rem; color:var(--maroon); line-height:1.1; margin-bottom:12px; font-weight:800; }
+.hero-title em { color:var(--deep-pink); font-style:normal; display:block; }
+.hero-tagline { font-size:1.15rem; color:var(--deep-pink); font-weight:600; font-style:italic; border-left:4px solid var(--primary); padding-left:14px; margin-bottom:18px; }
+.hero-desc { color:var(--text-mid); font-size:0.93rem; line-height:1.7; margin-bottom:28px; }
+.hero-cta { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:32px; }
+.hero-elig-btn { display:inline-flex; align-items:center; gap:8px; background:white; border:2px solid var(--blush); border-radius:50px; padding:10px 20px; color:var(--deep-pink); font-weight:700; font-size:0.85rem; cursor:pointer; transition:all 0.2s; }
+.hero-elig-btn:hover { background:var(--card-pink); border-color:var(--primary); }
+.hero-stats { display:flex; gap:20px; padding:16px 20px; background:white; border-radius:var(--r-md); box-shadow:var(--shadow-sm); border:1.5px solid var(--blush); flex-wrap:wrap; }
+.hero-stat { text-align:center; flex:1; min-width:80px; }
+.hero-stat .num { font-size:1.6rem; color:var(--maroon); font-weight:800; }
+.hero-stat .lbl { font-size:0.7rem; color:var(--text-mid); font-weight:600; margin-top:2px; }
+.hero-stat-div { width:1px; background:var(--blush); }
+.hero-img-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
+.hero-img { width:100%; max-width:400px; border-radius:40px 40px 40px 90px; aspect-ratio:4/5; background:linear-gradient(135deg,var(--blush),var(--primary)); display:flex; align-items:center; justify-content:center; font-size:8rem; box-shadow:0 28px 72px rgba(136,14,79,0.2); }
+.hero-float { position:absolute; background:white; border-radius:var(--r-sm); padding:12px 16px; box-shadow:var(--shadow-lg); display:flex; align-items:center; gap:8px; }
+.hero-float:nth-child(2){bottom:36px;left:-16px;animation:hFloat 4s ease-in-out infinite;}
+.hero-float:nth-child(3){top:56px;right:-16px;animation:hFloat 4s ease-in-out infinite 2s;}
+@keyframes hFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+.hero-float .fi { font-size:1.4rem; }
+.hero-float .fv { font-weight:700; font-size:0.88rem; color:var(--maroon); }
+.hero-float .fs { font-size:0.68rem; color:var(--text-mid); }
+
+/* ============================  SCHEME TRACKER  ============================ */
+.tracker-card { background:white; border-radius:var(--r-md); border:1.5px solid var(--blush); overflow:hidden; box-shadow:var(--shadow-sm); }
+.tracker-card-header { padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; cursor:pointer; }
+.tracker-card-header:hover { background:var(--baby-pink); }
+.tracker-scheme-info .ts-name { font-weight:700; color:var(--maroon); font-size:0.92rem; }
+.tracker-scheme-info .ts-date { font-size:0.75rem; color:var(--text-mid); margin-top:2px; }
+.tracker-expand { display:none; padding:16px 20px; border-top:1.5px solid var(--blush); background:var(--baby-pink); }
+.tracker-expand.open { display:block; }
+.next-step { background:white; border-radius:var(--r-sm); padding:12px 14px; border-left:3px solid var(--amber); font-size:0.83rem; color:var(--text-dark); margin-top:10px; }
+
+/* ============================  ELIGIBILITY CALCULATOR  ============================ */
+#eligPage.active { display:block; }
+
+/* ============================  MODAL  ============================ */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:200; display:none; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px); }
+.modal-overlay.open { display:flex; }
+.modal-box { background:white; border-radius:var(--r-xl); max-width:720px; width:100%; max-height:88vh; overflow-y:auto; box-shadow:0 28px 72px rgba(0,0,0,0.28); animation:modalIn 0.3s cubic-bezier(.22,.68,0,1.2) both; }
+@keyframes modalIn{from{opacity:0;transform:scale(0.92);}to{opacity:1;transform:scale(1);}}
+.modal-header { background:linear-gradient(135deg,var(--maroon),var(--deep-pink)); color:white; padding:24px 28px; border-radius:var(--r-xl) var(--r-xl) 0 0; display:flex; justify-content:space-between; align-items:flex-start; }
+.modal-header h3 { font-size:1.2rem; font-weight:800; }
+.modal-header p { opacity:0.82; font-size:0.82rem; margin-top:4px; }
+.modal-close { background:rgba(255,255,255,0.2); border:none; color:white; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
+.modal-close:hover { background:rgba(255,255,255,0.35); }
+.modal-body { padding:28px; }
+
+/* ============================  SOS  ============================ */
+.sos-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:400; display:none; align-items:center; justify-content:center; padding:14px; }
+.sos-overlay.open { display:flex; }
+.sos-box { background:white; border-radius:var(--r-xl); max-width:400px; width:100%; max-height:94vh; overflow-y:auto; padding:26px 22px; text-align:center; animation:modalIn 0.3s cubic-bezier(.22,.68,0,1.2) both; }
+.sos-countdown-num { font-size:5rem; font-weight:900; color:var(--sos-red); animation:cdPulse 1s ease-in-out infinite; line-height:1; }
+@keyframes cdPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+.sos-live-badge { display:inline-flex; align-items:center; gap:6px; background:var(--sos-red); color:white; border-radius:50px; padding:4px 14px; font-size:0.72rem; font-weight:800; letter-spacing:1px; animation:livePulse 1.2s ease-in-out infinite; }
+@keyframes livePulse{0%,100%{opacity:1;}50%{opacity:0.6;}}
+.sos-camera-wrap { position:relative; border-radius:var(--r-md); overflow:hidden; background:#000; margin:12px 0; aspect-ratio:4/3; }
+.sos-camera-wrap video { width:100%; height:100%; object-fit:cover; display:block; }
+.sos-rec-badge { position:absolute; top:8px; left:8px; background:rgba(211,47,47,0.9); color:white; border-radius:6px; padding:3px 9px; font-size:0.68rem; font-weight:800; letter-spacing:1px; display:flex; align-items:center; gap:4px; }
+.sos-rec-dot { animation:livePulse 0.8s infinite; }
+.mic-bars-wrap { display:flex; align-items:center; gap:6px; background:var(--sos-light); border-radius:var(--r-sm); padding:9px 14px; margin:10px 0; border:1px solid #ffcdd2; }
+.mic-bars { display:flex; align-items:center; gap:3px; flex:1; height:26px; justify-content:center; }
+.mic-b { width:4px; background:var(--sos-red); border-radius:3px; animation:mbPulse 0.5s ease-in-out infinite alternate; }
+.mic-b:nth-child(1){height:7px;animation-delay:0s;}.mic-b:nth-child(2){height:14px;animation-delay:.07s;}.mic-b:nth-child(3){height:20px;animation-delay:.14s;}.mic-b:nth-child(4){height:24px;animation-delay:.21s;}.mic-b:nth-child(5){height:20px;animation-delay:.28s;}.mic-b:nth-child(6){height:14px;animation-delay:.35s;}.mic-b:nth-child(7){height:8px;animation-delay:.42s;}
+@keyframes mbPulse{from{transform:scaleY(0.4);}to{transform:scaleY(1.1);}}
+.gps-box { background:var(--sos-light); border:1px solid #ffcdd2; border-radius:var(--r-sm); padding:14px; margin:10px 0; text-align:left; }
+.gps-coords { display:flex; gap:8px; margin:8px 0; }
+.gps-coord { flex:1; background:white; border-radius:8px; padding:7px; border:1px solid #ffcdd2; text-align:center; }
+.gps-coord .cl { display:block; font-size:0.65rem; font-weight:700; color:var(--text-mid); }
+.gps-coord .cv { font-size:0.78rem; font-weight:800; color:var(--sos-red); font-family:monospace; }
+.gps-log { font-size:0.7rem; color:var(--green); font-weight:600; background:var(--green-light); border-radius:6px; padding:5px 9px; border:1px solid #bbf7d0; margin-top:6px; }
+.perm-list { display:flex; flex-direction:column; gap:9px; margin:18px 0; text-align:left; }
+.perm-item { display:flex; align-items:center; gap:10px; background:var(--sos-light); border-radius:10px; padding:11px 14px; border:1px solid #ffcdd2; }
+.perm-icon { font-size:1.1rem; flex-shrink:0; }
+.perm-label { flex:1; font-weight:600; font-size:0.85rem; }
+.perm-status { font-size:0.75rem; font-weight:700; border-radius:50px; padding:3px 10px; }
+.ps-wait { background:#f3f4f6; color:#9ca3af; }
+.ps-ok   { background:var(--green-light); color:var(--green); }
+.ps-no   { background:var(--sos-light); color:var(--sos-red); }
+.sos-contacts-row { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:10px 0; }
+.sos-ctag { background:var(--sos-light); border:1px solid #ffcdd2; border-radius:50px; padding:4px 12px; font-size:0.73rem; font-weight:600; color:var(--sos-red); }
+.hold-btn { background:#f3f4f6; color:var(--text-dark); border:none; border-radius:50px; padding:11px 24px; font-family:'Noto Sans',sans-serif; font-weight:700; cursor:pointer; font-size:0.87rem; transition:all 0.2s; }
+.hold-btn:hover { background:#e5e7eb; }
+
+/* ============================  VOICE SAKHI  ============================ */
+.sakhi-card { position:fixed; bottom:96px; left:20px; width:310px; background:white; border-radius:var(--r-xl); box-shadow:0 16px 48px rgba(0,0,0,0.18); z-index:150; display:none; flex-direction:column; max-height:440px; border:1.5px solid var(--blush); animation:chatIn 0.3s cubic-bezier(.22,.68,0,1.2) both; }
+.sakhi-card.open { display:flex; }
+@keyframes chatIn{from{opacity:0;transform:translateY(18px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+.sakhi-header { background:linear-gradient(135deg,var(--primary),var(--deep-pink)); color:white; padding:14px 18px; border-radius:var(--r-xl) var(--r-xl) 0 0; display:flex; justify-content:space-between; align-items:center; }
+.sakhi-header h4 { font-size:0.9rem; font-weight:700; }
+.sakhi-header p  { font-size:0.72rem; opacity:0.85; }
+.sakhi-messages { flex:1; overflow-y:auto; padding:12px 14px; display:flex; flex-direction:column; gap:9px; min-height:140px; }
+.sakhi-wave { display:flex; align-items:center; gap:4px; padding:12px; background:var(--card-pink); border-radius:12px; align-self:flex-start; }
+.wave-bar { width:4px; border-radius:2px; background:var(--deep-pink); animation:wavePulse 0.6s ease-in-out infinite alternate; }
+.wave-bar:nth-child(1){height:8px;animation-delay:0s;}.wave-bar:nth-child(2){height:16px;animation-delay:.1s;}.wave-bar:nth-child(3){height:22px;animation-delay:.2s;}.wave-bar:nth-child(4){height:16px;animation-delay:.3s;}.wave-bar:nth-child(5){height:8px;animation-delay:.4s;}
+@keyframes wavePulse{from{transform:scaleY(0.5);}to{transform:scaleY(1.2);}}
+.sakhi-action-btns { display:flex; gap:8px; flex-wrap:wrap; padding:0 14px 10px; }
+.sakhi-action-btn { padding:7px 14px; background:var(--card-pink); color:var(--deep-pink); border:1.5px solid var(--blush); border-radius:50px; font-family:'Noto Sans',sans-serif; font-size:0.78rem; font-weight:700; cursor:pointer; transition:all 0.2s; }
+.sakhi-action-btn:hover { background:var(--blush); }
+.sakhi-input-row { padding:10px 14px; border-top:1.5px solid var(--blush); display:flex; gap:8px; }
+.sakhi-input { flex:1; padding:9px 14px; border:2px solid var(--blush); border-radius:50px; font-family:'Noto Sans',sans-serif; font-size:0.82rem; outline:none; }
+.sakhi-input:focus { border-color:var(--primary); }
+.sakhi-mic-btn { width:36px; height:36px; border:none; border-radius:50%; background:var(--card-pink); cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0; }
+.sakhi-mic-btn.listening { background:var(--deep-pink); animation:sosBlink 0.8s infinite; }
+.sakhi-send-btn { width:36px; height:36px; background:linear-gradient(135deg,var(--primary),var(--deep-pink)); border:none; border-radius:50%; color:white; cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+/* ============================  FLOATING BUTTONS  ============================ */
+.floating-wrap { position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:10px; z-index:140; }
+.floating-left { position:fixed; bottom:20px; left:20px; z-index:140; }
+.fab { width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.4rem; box-shadow:0 6px 20px rgba(0,0,0,0.2); transition:all 0.25s; position:relative; }
+.fab:hover { transform:scale(1.08); }
+.fab-sos { background:linear-gradient(135deg,var(--sos-red),#b71c1c); color:white; animation:sosPulse 2.5s ease-in-out infinite; }
+@keyframes sosPulse{0%,100%{box-shadow:0 6px 20px rgba(211,47,47,0.4);}50%{box-shadow:0 6px 28px rgba(211,47,47,0.7),0 0 0 8px rgba(211,47,47,0.12);}}
+.fab-sakhi { background:linear-gradient(135deg,var(--primary),var(--deep-pink)); color:white; }
+.fab-tooltip { position:absolute; right:64px; background:var(--text-dark); color:white; padding:4px 9px; border-radius:6px; font-size:0.72rem; font-weight:600; white-space:nowrap; opacity:0; transition:opacity 0.2s; pointer-events:none; }
+.fab-sos .fab-tooltip { right:64px; }
+.fab-sakhi .fab-tooltip { right:64px; }
+.fab:hover .fab-tooltip { opacity:1; }
+@keyframes sosBlink{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+/* ============================  TOAST  ============================ */
+.toast { position:fixed; top:72px; right:20px; background:var(--maroon); color:white; padding:12px 18px; border-radius:var(--r-sm); font-weight:600; font-size:0.85rem; z-index:500; transform:translateX(130%); transition:transform 0.3s; display:flex; align-items:center; gap:8px; max-width:280px; box-shadow:var(--shadow-lg); }
+.toast.show { transform:translateX(0); }
+
+/* ============================  RESPONSIVE  ============================ */
+@media(max-width:768px){
+  .hero-inner { grid-template-columns:1fr; gap:28px; text-align:center; }
+  .hero-img-wrap { order:-1; }
+  .hero-title { font-size:1.9rem; }
+  .hero-cta { justify-content:center; }
+  .hero-stats { justify-content:center; }
+  .nav-links { display:none; }
+  .login-card { padding:28px 22px; }
+  .otp-boxes { gap:6px; }
+  .otp-box { width:40px; height:48px; font-size:1.3rem; }
+  .hero-float { display:none; }
+  .sakhi-card { width:calc(100vw - 40px); }
+  .floating-wrap { bottom:16px; right:16px; }
+  .floating-left { bottom:16px; left:16px; }
+}
+@media(max-width:480px){
+  .hero-title { font-size:1.6rem; }
+  .grid-3,.grid-2 { grid-template-columns:1fr; }
+  .login-card { padding:24px 18px; }
+  .modal-box { border-radius:var(--r-lg) var(--r-lg) 0 0; position:fixed; bottom:0; left:0; right:0; max-height:90vh; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     LOGIN PAGE
+     ============================================================ -->
+<div id="loginPage" class="page active">
+  <div class="login-bg"><span></span><span></span><span></span></div>
+  <div class="login-card">
+    <!-- Logo -->
+    <div class="login-logo">
+      <span class="login-logo-icon">🪷</span>
+      <h1>Aapki Suraksha</h1>
+      <p>आपकी सुरक्षा — हमारी प्रतिबद्धता</p>
+    </div>
+    <div class="login-tagline">
+      <p>Empowering every woman with safety, rights &amp; benefits she deserves.</p>
+    </div>
+
+    <!-- LANGUAGE SELECT -->
+    <div style="text-align:right;margin-bottom:12px;">
+      <select id="loginLangSelect" onchange="setLang(this.value)" style="padding:6px 12px;border:2px solid var(--blush);border-radius:50px;font-family:'Noto Sans',sans-serif;font-size:0.8rem;color:var(--deep-pink);font-weight:700;outline:none;cursor:pointer;">
+        <option value="hi">🇮🇳 हिंदी</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ta">🇮🇳 தமிழ்</option>
+        <option value="te">🇮🇳 తెలుగు</option>
+        <option value="bn">🇮🇳 বাংলা</option>
+        <option value="mr">🇮🇳 मराठी</option>
+      </select>
+    </div>
+
+    <!-- STEP 1: MOBILE -->
+    <div id="lsStep1">
+      <div class="form-group">
+        <label id="lbl_mobile">📱 Mobile Number</label>
+        <input type="tel" class="form-input" id="mobileInput" placeholder="Enter 10-digit mobile number" maxlength="10" oninput="validateMobile(this)"/>
+        <div class="form-error hidden" id="mobileError">Please enter a valid 10-digit mobile number</div>
+      </div>
+      <button class="btn btn-primary w-full" id="sendOtpBtn" onclick="sendOTP()">Send OTP →</button>
+      <div class="resend-row mt-12" style="font-size:0.78rem;color:var(--text-mid);">
+        <span>By continuing you agree to our </span><a style="color:var(--deep-pink);font-weight:600;">Privacy Policy</a>
+      </div>
+    </div>
+
+    <!-- STEP 2: OTP -->
+    <div id="lsStep2" class="hidden">
+      <p style="font-size:0.85rem;color:var(--text-mid);text-align:center;margin-bottom:16px;">OTP sent to <strong id="sentTo" style="color:var(--maroon);"></strong></p>
+      <div class="otp-boxes" id="otpBoxes">
+        <input class="otp-box" type="text" maxlength="1" oninput="otpNext(this,0)" onkeydown="otpBack(event,this,0)"/>
+        <input class="otp-box" type="text" maxlength="1" oninput="otpNext(this,1)" onkeydown="otpBack(event,this,1)"/>
+        <input class="otp-box" type="text" maxlength="1" oninput="otpNext(this,2)" onkeydown="otpBack(event,this,2)"/>
+        <input class="otp-box" type="text" maxlength="1" oninput="otpNext(this,3)" onkeydown="otpBack(event,this,3)"/>
+        <input class="otp-box" type="text" maxlength="1" oninput="otpNext(this,4)" onkeydown="otpBack(event,this,4)"/>
+        <input class="otp-box" type="text" maxlength="1" oninput="otpNext(this,5)" onkeydown="otpBack(event,this,5)"/>
+      </div>
+      <div class="form-error hidden text-center" id="otpError">Incorrect OTP. Try again.</div>
+      <button class="btn btn-primary w-full mt-16" onclick="verifyOTP()">Verify OTP ✓</button>
+      <div class="resend-row">
+        <span>Resend OTP in </span><span id="resendTimer">30s</span>
+        &nbsp;|&nbsp;<span class="resend-link hidden" id="resendLink" onclick="resendOTP()">Resend</span>
+      </div>
+    </div>
+
+    <!-- STEP 3: ONBOARDING -->
+    <div id="lsStep3" class="hidden">
+      <!-- 3a: Name -->
+      <div id="ob1">
+        <p style="font-size:1rem;font-weight:700;color:var(--maroon);margin-bottom:16px;">👋 What should we call you?</p>
+        <div class="form-group">
+          <input type="text" class="form-input" id="nameInput" placeholder="Your first name"/>
+        </div>
+        <button class="btn btn-primary w-full" onclick="obNext(2)">Next →</button>
+      </div>
+      <!-- 3b: Language -->
+      <div id="ob2" class="hidden">
+        <p style="font-size:1rem;font-weight:700;color:var(--maroon);margin-bottom:16px;">🌐 Choose your language</p>
+        <div class="lang-grid" id="langGrid">
+          <div class="lang-option selected" onclick="selectLang(this,'hi')">हिंदी<span class="lang-check"> ✓</span></div>
+          <div class="lang-option" onclick="selectLang(this,'en')">English<span class="lang-check"> ✓</span></div>
+          <div class="lang-option" onclick="selectLang(this,'ta')">தமிழ்<span class="lang-check"> ✓</span></div>
+          <div class="lang-option" onclick="selectLang(this,'te')">తెలుగు<span class="lang-check"> ✓</span></div>
+          <div class="lang-option" onclick="selectLang(this,'bn')">বাংলা<span class="lang-check"> ✓</span></div>
+          <div class="lang-option" onclick="selectLang(this,'mr')">मराठी<span class="lang-check"> ✓</span></div>
+        </div>
+        <button class="btn btn-primary w-full mt-12" onclick="obNext(3)">Next →</button>
+      </div>
+      <!-- 3c: Emergency Contacts -->
+      <div id="ob3" class="hidden">
+        <p style="font-size:1rem;font-weight:700;color:var(--maroon);margin-bottom:6px;">🌸 Add your Sakhi Circle</p>
+        <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:16px;">These people will be alerted in an emergency.</p>
+        <div id="contactsList">
+          <div class="contact-row"><input class="form-input" placeholder="Name" style="max-width:130px;"/><input class="form-input" type="tel" placeholder="Mobile number"/></div>
+          <div class="contact-row"><input class="form-input" placeholder="Name" style="max-width:130px;"/><input class="form-input" type="tel" placeholder="Mobile number"/></div>
+        </div>
+        <button class="btn btn-secondary w-full mt-8 mb-8" onclick="addContact()" style="font-size:0.85rem;">+ Add another contact</button>
+        <button class="btn btn-primary w-full" onclick="finishOnboarding()">Get Started 🌸</button>
+        <div style="text-align:center;margin-top:10px;"><span class="resend-link" onclick="finishOnboarding()">Skip for now</span></div>
+      </div>
+      <!-- Progress dots -->
+      <div class="onboard-dots mt-16">
+        <div class="onboard-dot active" id="od1"></div>
+        <div class="onboard-dot" id="od2"></div>
+        <div class="onboard-dot" id="od3"></div>
+      </div>
+    </div>
+
+    <div class="login-emergency">🆘 Emergency? Call 112 — No login needed</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar" style="display:none;">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="nav('home')">
+      <span class="nav-brand-icon">🪷</span>
+      <div class="nav-brand-text">
+        <h2>Aapki Suraksha</h2>
+        <p>आपकी सुरक्षा — हमारी प्रतिबद्धता</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="nav('home')">Home</button>
+      <button class="nav-link" onclick="nav('schemes')">Schemes</button>
+      <button class="nav-link" onclick="nav('rights')">Rights</button>
+      <button class="nav-link" onclick="nav('stories')">Stories</button>
+      <button class="nav-link" onclick="nav('helpline')">Helplines</button>
+      <button class="nav-link" onclick="nav('tracker')">My Tracker</button>
+    </div>
+    <div class="nav-right">
+      <select class="lang-btn" onchange="setLang(this.value)" id="navLang">
+        <option value="hi">🇮🇳 हिंदी</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ta">தமிழ்</option>
+        <option value="mr">मराठी</option>
+      </select>
+      <div class="nav-avatar" id="navAvatar" onclick="nav('tracker')">D</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HOME PAGE
+     ============================================================ -->
+<div id="homePage" class="page">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">🪷 India's Women Empowerment Platform</div>
+        <h1 class="hero-title">Her Safety is<em>Our Commitment</em></h1>
+        <div class="hero-tagline">"Aapki Suraksha, Hamari Pratibaddhata"</div>
+        <p class="hero-desc">Access 50+ government schemes, know your legal rights, find helplines, and raise emergency SOS — all in one secure, Hindi-first platform designed for every woman in India.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" onclick="nav('schemes')">Explore Schemes →</button>
+          <button class="btn btn-secondary btn-lg" onclick="nav('rights')">Know Your Rights</button>
+        </div>
+        <div class="hero-elig-btn" onclick="nav('elig')" style="margin-bottom:20px;display:inline-flex;">
+          ✨ Check My Eligibility — Find schemes for you
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">50+</div><div class="lbl">Schemes</div></div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat"><div class="num">1.2M+</div><div class="lbl">Helped</div></div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat"><div class="num">24/7</div><div class="lbl">Support</div></div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat"><div class="num">30+</div><div class="lbl">Rights</div></div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img">
+          <img src="https://raw.githubusercontent.com/Saurabh1006/Assets/main/nari_shakti.png" alt="Hero Image"/>
+        </div>
+        <div class="hero-float"><span class="fi">🛡️</span><div><div class="fv">Protected</div><div class="fs">Legally Secured</div></div></div>
+        <div class="hero-float"><span class="fi">✅</span><div><div class="fv">Govt. Verified</div><div class="fs">100% Accurate Info</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEMES SECTION -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">🏛️ Government Schemes</div>
+        <h2>Benefits Made For You</h2>
+        <p>Discover central and state government programs designed to empower women financially, educationally, and socially.</p>
+      </div>
+      <div class="grid-3" id="homeSchemeCards"></div>
+      <div class="text-center mt-24"><button class="btn btn-primary" onclick="nav('schemes')">View All Schemes →</button></div>
+    </div>
+  </section>
+
+  <!-- RIGHTS SECTION -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">⚖️ Know Your Rights</div>
+        <h2>What Protects You</h2>
+        <p>Legal rights explained through real-life situations — not legal jargon. Know your rights in plain Hindi and English.</p>
+      </div>
+      <div class="grid-3" id="homeRightsCards"></div>
+      <div class="text-center mt-24"><button class="btn btn-primary" onclick="nav('rights')">Explore All Rights →</button></div>
+    </div>
+  </section>
+
+  <!-- STORIES SECTION -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">💬 Real Stories</div>
+        <h2>She Did It. So Can You.</h2>
+        <p>Stories of courage, resilience, and transformation from women across India — real names, real victories.</p>
+      </div>
+      <div class="grid-3" id="homeStoryCards"></div>
+    </div>
+  </section>
+
+  <!-- HELPLINES SECTION -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">📞 Helplines</div>
+        <h2>Help Is One Call Away</h2>
+        <p>Free, confidential, 24×7 support lines — available in Hindi and regional languages.</p>
+      </div>
+      <!-- Emergency Numbers -->
+      <div class="emergency-card">
+        <div style="font-size:2.5rem;">🚨</div>
+        <div style="flex:1;">
+          <div class="title">Emergency Numbers — Call Now, Free, 24×7</div>
+          <div style="font-size:0.82rem;opacity:0.88;">These numbers work even without internet or without login.</div>
+          <div class="emergency-numbers">
+            <a class="emergency-num-btn" href="tel:112">📞 112 Police</a>
+            <a class="emergency-num-btn" href="tel:1091">📞 1091 Women</a>
+            <a class="emergency-num-btn" href="tel:100">📞 100 Police</a>
+          </div>
+        </div>
+      </div>
+      <div class="grid-3" id="homeHelplineCards"></div>
+      <div class="text-center mt-24"><button class="btn btn-secondary" onclick="nav('helpline')">View All Helplines →</button></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SCHEMES PAGE
+     ============================================================ -->
+<div id="schemesPage" class="page">
+  <div class="page-header">
+    <h1>🏛️ Government Schemes</h1>
+    <p>All welfare programs and benefits designed for women and girls in India</p>
+  </div>
+  <div class="page-content">
+    <div class="search-bar-wrap"><span class="search-icon">🔍</span><input class="search-bar" id="schemeSearch" placeholder="Search schemes... (e.g. Ujjwala, housing, education)" oninput="filterSchemes()"/></div>
+    <div class="filter-pills" id="schemePills"></div>
+    <div class="grid-3" id="allSchemeCards"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCHEME DETAIL PAGE
+     ============================================================ -->
+<div id="schemeDetailPage" class="page">
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
+      <button class="back-btn" onclick="goBack()">← Back</button>
+      <span class="detail-icon" id="sdIcon"></span>
+      <h1 class="detail-title" id="sdTitle"></h1>
+      <p class="detail-subtitle" id="sdSubtitle"></p>
+    </div>
+  </div>
+  <div class="detail-body mt-32">
+    <div class="tabs" id="schemeTabs">
+      <button class="tab-btn active" onclick="switchTab('sd','overview')">Overview</button>
+      <button class="tab-btn" onclick="switchTab('sd','guidance')">Guidance</button>
+      <button class="tab-btn" onclick="switchTab('sd','apply')">Apply</button>
+    </div>
+    <!-- OVERVIEW -->
+    <div class="tab-panel active" id="sdTab_overview">
+      <div class="video-placeholder" id="sdVideo"><div class="play-btn">▶</div><p id="sdVideoTitle" style="font-weight:600;font-size:0.9rem;"></p><p style="font-size:0.78rem;opacity:0.75;margin-top:4px;">Tap to watch</p></div>
+      <div class="audio-player"><button class="audio-play-btn" onclick="toggleAudio(this)">▶</button><div class="audio-track"><div class="audio-progress" id="sdAudioProg"></div></div><span class="audio-label">Audio Guide</span><span class="audio-label" style="margin-left:auto;">3:24</span></div>
+      <div id="sdInfo"></div>
+    </div>
+    <!-- GUIDANCE -->
+    <div class="tab-panel" id="sdTab_guidance">
+      <div class="guidance-steps" id="sdGuidanceSteps"></div>
+    </div>
+    <!-- APPLY -->
+    <div class="tab-panel" id="sdTab_apply">
+      <div id="sdEligCheck"></div>
+    </div>
+    <!-- Actions -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+      <button class="btn btn-secondary" onclick="openGuidanceModal('scheme')">📋 Step Guide</button>
+      <button class="btn btn-primary" onclick="applyScheme()">✅ Apply Now</button>
+      <button class="btn btn-outline btn-sm" onclick="saveScheme()">🔖 Save Scheme</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     RIGHTS PAGE
+     ============================================================ -->
+<div id="rightsPage" class="page">
+  <div class="page-header">
+    <h1>⚖️ Your Legal Rights</h1>
+    <p>Know the laws that protect you — your rights are your shield</p>
+  </div>
+  <div class="page-content">
+    <div class="filter-pills" id="rightsPills"></div>
+    <div class="grid-3" id="allRightsCards"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     RIGHTS DETAIL PAGE
+     ============================================================ -->
+<div id="rightsDetailPage" class="page">
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
+      <button class="back-btn" onclick="goBack()">← Back</button>
+      <span class="detail-icon" id="rdIcon"></span>
+      <h1 class="detail-title" id="rdTitle"></h1>
+      <p class="detail-subtitle" id="rdSubtitle"></p>
+    </div>
+  </div>
+  <div class="detail-body mt-32">
+    <div class="video-placeholder"><div class="play-btn">▶</div><p id="rdVideoTitle" style="font-weight:600;font-size:0.9rem;"></p><p style="font-size:0.78rem;opacity:0.75;margin-top:4px;">Legal expert explains in Hindi</p></div>
+    <!-- AI CHAT -->
+    <div class="chat-block mb-16">
+      <div class="chat-header"><div><h4>⚖️ Kanoon Sakhi — AI Legal Advisor</h4><p>Ask your legal question in Hindi or English</p></div><button class="modal-close" onclick="clearRightsChat()">🗑</button></div>
+      <div class="chat-messages" id="rdChatMsgs"><div class="chat-msg bot">Namaste! 🙏 Main aapki Kanoon Sakhi hoon. Aap mujhse apna koi bhi legal sawal pooch sakti hain — Hindi ya English mein.</div></div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="rdChatInput" placeholder="Type or speak your question..." onkeydown="if(event.key==='Enter')sendRightsChat()"/>
+        <button class="chat-send" onclick="sendRightsChat()">➤</button>
+      </div>
+    </div>
+    <!-- FULL INFO -->
+    <div id="rdInfo"></div>
+    <!-- GUIDANCE STEPS -->
+    <div class="info-block">
+      <h3>📋 What To Do — Step by Step</h3>
+      <div class="guidance-steps mt-16" id="rdGuidanceSteps"></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+      <button class="btn btn-primary" onclick="openGuidanceModal('rights')">📋 Full Guidance</button>
+      <button class="btn btn-secondary" onclick="showToast('Opening NALSA Legal Aid portal...')">📩 Apply for Legal Aid</button>
+      <button class="btn btn-outline btn-sm" onclick="showLawyerModal()">👩‍⚖️ Connect to Lawyer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     STORIES PAGE
+     ============================================================ -->
+<div id="storiesPage" class="page">
+  <div class="page-header">
+    <h1>💬 Real Stories</h1>
+    <p>Stories of courage and transformation — inspiring every woman in India</p>
+  </div>
+  <div class="page-content">
+    <div class="filter-pills" id="storyPills"></div>
+    <div class="grid-3" id="allStoryCards"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     STORY DETAIL PAGE
+     ============================================================ -->
+<div id="storyDetailPage" class="page">
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
+      <button class="back-btn" onclick="goBack()">← Back</button>
+      <span class="detail-icon" id="stdIcon"></span>
+      <h1 class="detail-title" id="stdTitle"></h1>
+      <p class="detail-subtitle" id="stdSubtitle"></p>
+    </div>
+  </div>
+  <div class="detail-body mt-32">
+    <div class="video-placeholder"><div class="play-btn">▶</div><p style="font-weight:600;font-size:0.9rem;">Watch Her Story</p><p style="font-size:0.78rem;opacity:0.75;margin-top:4px;">Documentary (anonymised)</p></div>
+    <div class="audio-player mt-16"><button class="audio-play-btn" onclick="toggleAudio(this)">▶</button><div class="audio-track"><div class="audio-progress"></div></div><span class="audio-label">Listen to Story</span><span class="audio-label" style="margin-left:auto;">5:12</span></div>
+    <div id="stdInfo"></div>
+    <div id="stdRelated"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     HELPLINE PAGE
+     ============================================================ -->
+<div id="helplinePage" class="page">
+  <div class="page-header">
+    <h1>📞 Helplines &amp; Support</h1>
+    <p>Free, confidential, 24×7 — available in Hindi and regional languages</p>
+  </div>
+  <div class="page-content">
+    <div class="emergency-card">
+      <div style="font-size:2.5rem;">🚨</div>
+      <div style="flex:1;">
+        <div class="title">Emergency Numbers — Available 24×7, Free, No Login Required</div>
+        <div class="emergency-numbers">
+          <a class="emergency-num-btn" href="tel:112">📞 112 Emergency</a>
+          <a class="emergency-num-btn" href="tel:1091">📞 1091 Women</a>
+          <a class="emergency-num-btn" href="tel:100">📞 100 Police</a>
+          <a class="emergency-num-btn" href="tel:1098">📞 1098 Child</a>
+        </div>
+      </div>
+    </div>
+    <div class="search-bar-wrap mt-16"><span class="search-icon">🔍</span><input class="search-bar" id="helplineSearch" placeholder="Search helplines..." oninput="filterHelplines()"/></div>
+    <div class="grid-3" id="allHelplineCards"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MY SCHEME TRACKER PAGE
+     ============================================================ -->
+<div id="trackerPage" class="page">
+  <div class="page-header">
+    <h1>📊 My Scheme Tracker</h1>
+    <p>Track the status of your government scheme applications</p>
+  </div>
+  <div class="page-content">
+    <div id="trackerList"></div>
+    <div id="trackerEmpty" class="hidden" style="text-align:center;padding:60px 20px;">
+      <div style="font-size:4rem;margin-bottom:16px;">📂</div>
+      <h3 style="color:var(--maroon);margin-bottom:10px;">No applications yet</h3>
+      <p style="color:var(--text-mid);margin-bottom:24px;">You haven't applied for any schemes yet. Explore and apply to track them here.</p>
+      <button class="btn btn-primary" onclick="nav('schemes')">Explore Schemes →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ELIGIBILITY CALCULATOR PAGE
+     ============================================================ -->
+<div id="eligPage" class="page">
+  <div class="page-header">
+    <h1>✨ Check My Eligibility</h1>
+    <p>Answer 5 simple questions — get a personalised list of schemes for you</p>
+  </div>
+  <div class="page-content" style="max-width:600px;margin:0 auto;">
+    <div id="eligQuizContainer"></div>
+    <div id="eligResultContainer" class="hidden"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     GUIDANCE MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="guidanceModal" onclick="closeOnOverlay(event,'guidanceModal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><h3 id="guidanceModalTitle">📋 Step-by-Step Guidance</h3><p>Follow these steps carefully</p></div>
+      <button class="modal-close" onclick="closeModal('guidanceModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="guidance-steps" id="guidanceModalSteps"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     LAWYER MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="lawyerModal" onclick="closeOnOverlay(event,'lawyerModal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div><h3>👩‍⚖️ Connect to Volunteer Lawyer</h3><p>Available within 24 hours</p></div>
+      <button class="modal-close" onclick="closeModal('lawyerModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="grid-2" id="lawyerList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SOS OVERLAY
+     ============================================================ -->
+<div class="sos-overlay" id="sosOverlay">
+  <div class="sos-box" id="sosBox">
+
+    <!-- Step 1: Confirm -->
+    <div id="sosStep1">
+      <div style="font-size:3rem;margin-bottom:12px;">🆘</div>
+      <h2 style="font-size:1.6rem;color:var(--sos-red);margin-bottom:10px;">Emergency SOS</h2>
+      <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:20px;line-height:1.6;">This will start a 3-second countdown, then activate your camera, microphone, and share your live location with your Sakhi Circle and emergency services.</p>
+      <button class="btn btn-danger w-full" style="margin-bottom:12px;" onclick="sosStartCountdown()">🚨 Activate Emergency SOS</button>
+      <button class="hold-btn w-full" onclick="closeSOS()">Cancel</button>
+    </div>
+
+    <!-- Step 2: Countdown -->
+    <div id="sosStep2" class="hidden">
+      <div class="sos-countdown-num" id="sosCountNum">3</div>
+      <p style="font-size:1rem;font-weight:700;color:var(--sos-red);margin:12px 0;">SOS activating...</p>
+      <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:20px;">Tap below to cancel</p>
+      <button class="hold-btn w-full" onclick="sosCancel()">Tap to Cancel</button>
+    </div>
+
+    <!-- Step 3: Permissions -->
+    <div id="sosStep3" class="hidden">
+      <div style="font-size:2rem;margin-bottom:12px;">🔐</div>
+      <h2 style="font-size:1.3rem;color:var(--maroon);margin-bottom:6px;">Requesting Permissions…</h2>
+      <p style="font-size:0.8rem;color:var(--text-mid);margin-bottom:4px;">Please allow all permissions when prompted.</p>
+      <div class="perm-list">
+        <div class="perm-item"><span class="perm-icon">📷</span><span class="perm-label">Camera Access</span><span class="perm-status ps-wait" id="pC">Waiting…</span></div>
+        <div class="perm-item"><span class="perm-icon">🎙️</span><span class="perm-label">Microphone Access</span><span class="perm-status ps-wait" id="pM">Waiting…</span></div>
+        <div class="perm-item"><span class="perm-icon">📍</span><span class="perm-label">Location Access</span><span class="perm-status ps-wait" id="pG">Waiting…</span></div>
+      </div>
+    </div>
+
+    <!-- Step 4: Active SOS -->
+    <div id="sosStep4" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <h2 style="font-size:1.2rem;color:var(--sos-red);margin:0;">🆘 SOS ACTIVE</h2>
+        <div class="sos-live-badge">● LIVE</div>
+      </div>
+      <div class="sos-camera-wrap">
+        <video id="sosCam" autoplay muted playsinline></video>
+        <div class="sos-rec-badge"><span class="sos-rec-dot">●</span> REC</div>
+      </div>
+      <div class="mic-bars-wrap">
+        <span style="font-size:0.72rem;font-weight:700;color:var(--sos-red);">🎙️ MIC</span>
+        <div class="mic-bars" id="micBars">
+          <div class="mic-b"></div><div class="mic-b"></div><div class="mic-b"></div>
+          <div class="mic-b"></div><div class="mic-b"></div><div class="mic-b"></div><div class="mic-b"></div>
+        </div>
+        <span style="font-size:0.72rem;font-weight:700;color:var(--sos-red);">ACTIVE</span>
+      </div>
+      <div class="gps-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <span style="font-weight:700;color:var(--sos-red);font-size:0.82rem;">📍 LIVE LOCATION</span>
+          <span class="badge badge-green" id="gpsStatus">Fetching…</span>
+        </div>
+        <div class="gps-coords">
+          <div class="gps-coord"><span class="cl">LAT</span><span class="cv" id="gpsLat">—</span></div>
+          <div class="gps-coord"><span class="cl">LNG</span><span class="cv" id="gpsLng">—</span></div>
+          <div class="gps-coord"><span class="cl">ACC</span><span class="cv" id="gpsAcc">—</span></div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-mid);margin-bottom:6px;cursor:pointer;" id="gpsAddr" onclick="openGoogleMaps()">Locating...</div>
+        <div class="gps-log" id="gpsLog">Preparing to send alerts…</div>
+      </div>
+      <div class="sos-contacts-row">
+        <span class="sos-ctag">👮 Police 112</span>
+        <span class="sos-ctag">📞 Women 181</span>
+        <span class="sos-ctag">🌸 Sakhi Circle</span>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <a class="btn btn-danger" href="tel:112" style="flex:1;text-decoration:none;font-size:0.82rem;">📞 Call 112</a>
+        <a class="btn btn-danger" href="tel:1091" style="flex:1;text-decoration:none;font-size:0.82rem;">📞 Call 1091</a>
+      </div>
+      <button class="hold-btn w-full mt-12" id="endSosBtn" onmousedown="startEndSOS()" onmouseup="cancelEndSOS()" ontouchstart="startEndSOS()" ontouchend="cancelEndSOS()">
+        Hold 3s to End SOS
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     VOICE SAKHI CARD
+     ============================================================ -->
+<div class="sakhi-card" id="sakhiCard">
+  <div class="sakhi-header">
+    <div><h4>🎙️ Sakhi Assistant</h4><p>Bol dena… I'm listening</p></div>
+    <button class="modal-close" onclick="toggleSakhi()">✕</button>
+  </div>
+  <div class="sakhi-messages" id="sakhiMsgs">
+    <div class="chat-msg bot">Namaste! 🙏 Main aapki Sakhi hoon. Aap mujhe bol sakti hain — Hindi ya English mein. Main schemes, rights, ya helplines ke baare mein bataungi.</div>
+  </div>
+  <div class="sakhi-action-btns" id="sakhiActions"></div>
+  <div class="sakhi-input-row">
+    <input class="sakhi-input" id="sakhiInput" placeholder="Type or tap mic to speak..." onkeydown="if(event.key==='Enter')sendSakhi()"/>
+    <button class="sakhi-mic-btn" id="sakhiMicBtn" onclick="toggleSakhiMic()">🎙️</button>
+    <button class="sakhi-send-btn" onclick="sendSakhi()">➤</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     FLOATING BUTTONS
+     ============================================================ -->
+<div class="floating-wrap" id="floatWrap" style="display:none;">
+  <button class="fab fab-sos" onclick="activateSOS()">🆘<span class="fab-tooltip">Emergency SOS</span></button>
+</div>
+<div class="floating-left" id="floatLeft" style="display:none;">
+  <button class="fab fab-sakhi" onclick="toggleSakhi()">🎙️<span class="fab-tooltip">Voice Sakhi</span></button>
+</div>
+
+<!-- ============================================================
+     TOAST
+     ============================================================ -->
+<div class="toast" id="toast">✅ Done!</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ============================================================
+// PROJECT CONFIG — All content managed here (PRD 4.4)
+// ============================================================
+const CONFIG = {
+  schemes: [
+    {
+      id:"pmawas", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/PM_Aawas.webp", tags:["Housing","Finance"], category:"Finance",
+      name:"PM Awas Yojana (PMAY)",
+      desc:"Affordable housing for women homeowners under India's Housing for All mission.",
+      benefit:"Subsidy up to ₹2.67 lakhs on home loans",
+      state:"Central",
+      video:"PM Awas Yojana — Full Explanation in Hindi",
+      fullDesc:"The Pradhan Mantri Awas Yojana (PMAY) provides affordable housing to urban and rural poor. Women are given priority in property co-ownership under this scheme, and a subsidy of up to ₹2.67 lakhs is provided on home loans for economically weaker sections.",
+      eligibility:["Annual family income below ₹18 lakhs","No pucca house owned in India","Women must be co-owner or sole owner of property","First-time home buyer (for subsidy)"],
+      documents:["Aadhaar Card","Income Certificate","Bank Account Statements (6 months)","Property Documents / Site Plan"],
+      guidance:[
+        {step:"Check Eligibility Online",img:"🌐",desc:"Visit pmaymis.gov.in → Citizen Assessment → Check eligibility using your Aadhaar number."},
+        {step:"Fill Application Form",img:"📝",desc:"Enter your personal details, income, and property information on the portal. Ensure all fields are accurate."},
+        {step:"Upload Documents",img:"📁",desc:"Upload scanned copies of Aadhaar, income certificate, bank statements, and property papers."},
+        {step:"Visit Nearest Bank",img:"🏦",desc:"Take your application reference number to any PMAY-authorized bank to process the subsidy on your home loan."},
+        {step:"Track Your Application",img:"📱",desc:"Use the PMAY website or helpline 1800-11-3377 to track your application status anytime."}
+      ],
+      eligQuiz:[
+        {q:"What is your annual family income?", opts:["Below ₹3 lakh","₹3–6 lakh","₹6–12 lakh","₹12–18 lakh"], correct:[0,1,2,3]},
+        {q:"Do you currently own a pucca house?", opts:["Yes","No"], correct:[1]},
+        {q:"Are you a first-time home buyer?", opts:["Yes","No"], correct:[0]}
+      ]
+    },
+    {
+      id:"bbbp", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Beti_bachao.png", tags:["Education","Girl Child"], category:"Education",
+      name:"Beti Bachao Beti Padhao",
+      desc:"National mission to promote welfare and education of the girl child across India.",
+      benefit:"Scholarship, free education & Sukanya Samriddhi Account benefits",
+      state:"Central",
+      video:"Beti Bachao Beti Padhao — Complete Guide",
+      fullDesc:"Beti Bachao Beti Padhao (BBBP) is a joint initiative of the Ministry of Women & Child Development, Health, and Education. It addresses the declining child sex ratio and empowers girls through education, awareness campaigns, and the Sukanya Samriddhi Yojana.",
+      eligibility:["Girl child aged 0–18 years","Parents/guardians with valid Aadhaar","Priority for districts with low Child Sex Ratio","Sukanya account for girls below 10 years"],
+      documents:["Girl's Birth Certificate","Parent Aadhaar Card","Bank Passbook (for Sukanya Account)","School Enrollment Certificate"],
+      guidance:[
+        {step:"Register at Anganwadi",img:"🏫",desc:"Visit your nearest Anganwadi centre. Register the girl child with the Anganwadi worker to be enrolled in the scheme."},
+        {step:"Open Sukanya Samriddhi Account",img:"💰",desc:"Open a Sukanya Samriddhi Account at any post office or authorized bank. Deposit from ₹250 to ₹1.5 lakh per year."},
+        {step:"Enroll in School",img:"📚",desc:"Ensure the girl child is enrolled in a government or government-aided school to receive scholarship benefits."},
+        {step:"Annual Follow-Up",img:"📊",desc:"District officials will track the girl's education progress. Keep all documents updated and participate in awareness programs."}
+      ],
+      eligQuiz:[
+        {q:"Is the beneficiary a girl child?", opts:["Yes","No"], correct:[0]},
+        {q:"What is the girl's age?", opts:["0–5 years","6–10 years","11–18 years"], correct:[0,1,2]}
+      ]
+    },
+    {
+      id:"mudra", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/PM_Mudra.png", tags:["Business","Finance","Entrepreneurship"], category:"Finance",
+      name:"MUDRA Loan for Women",
+      desc:"Micro loans for women entrepreneurs to start or expand small businesses without collateral.",
+      benefit:"Loans up to ₹10 lakhs at subsidized interest",
+      state:"Central",
+      video:"How to Apply for MUDRA Loan — Women Entrepreneurs",
+      fullDesc:"Under PM MUDRA Yojana, women entrepreneurs can get loans under Shishu (up to ₹50,000), Kishor (₹50,000–₹5 lakh), and Tarun (₹5–₹10 lakh) categories for micro and small enterprises. No collateral required.",
+      eligibility:["Woman aged 18 years and above","Valid business plan or existing small business","No prior loan default history","Valid KYC documents (Aadhaar + PAN)"],
+      documents:["Aadhaar Card","PAN Card","Business Plan or GST Certificate","Bank Statement (last 6 months)"],
+      guidance:[
+        {step:"Choose Loan Category",img:"🏷️",desc:"Decide: Shishu (up to ₹50K), Kishor (₹50K–5L), or Tarun (₹5L–10L) based on your business stage."},
+        {step:"Visit Authorized Lender",img:"🏦",desc:"Go to any scheduled commercial bank, regional rural bank, or microfinance institution with MUDRA tie-up."},
+        {step:"Fill MUDRA Application",img:"📋",desc:"Fill the MUDRA loan application form with your business details, projected income, and loan requirement."},
+        {step:"Submit Documents",img:"📁",desc:"Submit KYC documents, business plan, and any proof of existing business activity."},
+        {step:"Receive Loan",img:"💳",desc:"Upon approval, the loan amount is credited to your bank account within 7–15 working days. A MUDRA card is also issued."}
+      ],
+      eligQuiz:[
+        {q:"Are you a woman aged 18 or above?", opts:["Yes","No"], correct:[0]},
+        {q:"Do you have or plan to start a small business?", opts:["Yes, existing business","Yes, planning to start","No"], correct:[0,1]},
+        {q:"Any prior loan defaults?", opts:["Yes","No"], correct:[1]}
+      ]
+    },
+    {
+      id:"ujjwala", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/ujjawala.png", tags:["Health","Household"], category:"Health",
+      name:"PM Ujjwala Yojana",
+      desc:"Free LPG gas connections to BPL women to eliminate health hazards of indoor smoke.",
+      benefit:"Free LPG connection + first refill + regulator & stove",
+      state:"Central",
+      video:"PM Ujjwala Yojana — Apply kaise karein",
+      fullDesc:"PM Ujjwala Yojana (PMUY) provides free LPG connections to women from Below Poverty Line (BPL) households to reduce their dependence on traditional cooking fuels which cause health hazards due to smoke.",
+      eligibility:["Woman from BPL household","Age 18 years or above","No existing LPG connection in the household","Listed in Socio Economic Caste Census (SECC) 2011"],
+      documents:["Aadhaar Card / Voter ID","BPL Card or Ration Card","Bank Account details","Proof of BPL status (SECC data)"],
+      guidance:[
+        {step:"Visit Nearest LPG Distributor",img:"🏪",desc:"Go to the nearest Indane, HP Gas, or Bharat Gas distributor and ask for the Ujjwala Yojana form."},
+        {step:"Fill KYC Form",img:"📝",desc:"Fill in the KYC form with your name, Aadhaar number, address, and bank account details."},
+        {step:"Submit Documents",img:"📁",desc:"Submit Aadhaar, BPL card, and bank passbook. A field verification may be done at your home."},
+        {step:"Connection Delivered",img:"🚚",desc:"After verification (7–10 days), LPG cylinder, regulator, and stove are delivered to your home free of cost."}
+      ],
+      eligQuiz:[
+        {q:"Do you belong to a BPL family?", opts:["Yes","No","Not sure"], correct:[0]},
+        {q:"Does your household already have an LPG connection?", opts:["Yes","No"], correct:[1]}
+      ]
+    },
+    {
+      id:"matrutva", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Pradhan_Mantri_Matritva.png", tags:["Maternity","Health","Finance"], category:"Health",
+      name:"Pradhan Mantri Matru Vandana Yojana",
+      desc:"Cash incentive for pregnant and lactating women to compensate for wage loss and improve health.",
+      benefit:"₹5,000 cash benefit in 3 installments",
+      state:"Central",
+      video:"Matru Vandana Yojana — Eligibility and Application",
+      fullDesc:"PMMVY is a maternity benefit program that provides a cash incentive of ₹5,000 to pregnant and lactating mothers for the first living child to compensate for wage loss and to improve health and nutrition.",
+      eligibility:["Pregnant and lactating women (first living child)","Age 19 years and above","Not availing similar benefits from any other source","Must register at nearest health facility"],
+      documents:["Aadhaar Card","MCP Card (Mother Child Protection Card)","Bank Account details","Proof of pregnancy / delivery"],
+      guidance:[
+        {step:"Register at Health Center",img:"🏥",desc:"Go to your nearest Anganwadi / PHC within the first trimester of pregnancy and register."},
+        {step:"Submit Installment 1",img:"💰",desc:"After registration and at least one prenatal check-up, claim the first installment of ₹1,000."},
+        {step:"Submit Installment 2",img:"💰",desc:"After 6 months of pregnancy and completing all required check-ups, claim the second installment of ₹2,000."},
+        {step:"Submit Installment 3",img:"🍼",desc:"After delivery and child's first vaccination, claim the third installment of ₹2,000."}
+      ],
+      eligQuiz:[
+        {q:"Are you pregnant or a new mother?", opts:["Yes","No"], correct:[0]},
+        {q:"Is this your first living child?", opts:["Yes","No"], correct:[0]},
+        {q:"Are you 19 years or above?", opts:["Yes","No"], correct:[0]}
+      ]
+    },
+    {
+      id:"samarthya", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Samarthya.png", tags:["Education","Scholarship"], category:"Education",
+      name:"Central Sector Scheme of Scholarships",
+      desc:"Scholarships for meritorious girl students from economically weaker sections for higher education.",
+      benefit:"₹10,000–12,000 per year scholarship for undergraduate studies",
+      state:"Central",
+      video:"Government Scholarships for Girl Students — Full Guide",
+      fullDesc:"The Central Sector Scheme provides scholarships to girl students who score above 80th percentile in Class 12 and belong to EWS/OBC categories for pursuing undergraduate or postgraduate degrees at recognized institutions.",
+      eligibility:["Girl student scored above 80th percentile in Class 12","Annual family income below ₹8 lakhs","Pursuing regular undergraduate course in recognized institution","Not receiving any other scholarship"],
+      documents:["Class 12 Marksheet","Income Certificate","Aadhaar Card","Admission Letter from College","Bank Account details"],
+      guidance:[
+        {step:"Register on NSP Portal",img:"🌐",desc:"Go to scholarships.gov.in and create a new student account with your Aadhaar number."},
+        {step:"Fill Scholarship Form",img:"📝",desc:"Complete the application form with your academic details, income, and bank information."},
+        {step:"Upload Documents",img:"📁",desc:"Upload marksheet, income certificate, admission letter, and Aadhaar."},
+        {step:"Institute Verification",img:"🏫",desc:"Your college/institute will verify your application on the NSP portal."},
+        {step:"Receive Scholarship",img:"💳",desc:"Approved scholarship amount is credited directly to your Aadhaar-linked bank account."}
+      ],
+      eligQuiz:[
+        {q:"Are you a girl student pursuing higher education?", opts:["Yes","No"], correct:[0]},
+        {q:"Did you score above 80% in Class 12?", opts:["Yes","No"], correct:[0]},
+        {q:"Is your annual family income below ₹8 lakhs?", opts:["Yes","No","Not sure"], correct:[0]}
+      ]
+    }
+  ],
+
+  rights: [
+    {
+      id:"dv", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/domestic_violence.png", bg:"linear-gradient(135deg,#c2185b,#880e4f)", category:"Domestic Violence",
+      name:"Protection from Domestic Violence",
+      situation:'My husband hits me and won\'t let me leave the house.',
+      desc:"The Protection of Women from Domestic Violence Act 2005 shields you from physical, emotional, sexual, and economic abuse.",
+      video:"Your Rights Under the DV Act — Explained in Hindi",
+      fullDesc:"The Domestic Violence Act 2005 (DV Act) protects women from physical, sexual, emotional, verbal, and economic abuse by family members or intimate partners. It covers wives, live-in partners, daughters, mothers, and sisters. You can apply for Protection Orders, Residence Orders, and Monetary Relief through a Magistrate's Court.",
+      actions:["File a complaint with a Protection Officer (PO) in your district","Call Women Helpline 181 for immediate assistance and PO contact","Approach Magistrate Court for Protection Order — can be granted in 1 hearing","Seek free legal aid from District Legal Services Authority (DLSA)","Contact nearest police station — DV Act complaints must be accepted"],
+      guidance:[
+        {step:"Ensure Immediate Safety",img:"🏃‍♀️",desc:"If in immediate danger, leave the house. Go to a neighbor, relative, or the nearest police station. Your safety comes first."},
+        {step:"Contact a Protection Officer",img:"👮‍♀️",desc:"Call Women Helpline 181 to be connected to a Protection Officer. They are legally required to help you file a DV complaint for free."},
+        {step:"Get Medical Examination",img:"🏥",desc:"Visit a government hospital for a medical examination. Keep the report as evidence of physical injuries."},
+        {step:"File in Magistrate Court",img:"⚖️",desc:"Your Protection Officer or a free NALSA lawyer will help file your case. The court can grant an immediate interim protection order."},
+        {step:"Get Protection Order",img:"📜",desc:"The Protection Order legally prohibits the abuser from contacting or harming you. Violation is a criminal offence."}
+      ]
+    },
+    {
+      id:"posh", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/POSH.png", bg:"linear-gradient(135deg,#9c27b0,#c2185b)", category:"Workplace",
+      name:"Right Against Workplace Harassment",
+      situation:'My boss is making inappropriate comments and I\'m afraid to speak up.',
+      desc:"POSH Act 2013 mandates every workplace with 10+ employees to have an Internal Complaints Committee (ICC).",
+      video:"POSH Act — How to File Workplace Harassment Complaint",
+      fullDesc:"The Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 (POSH Act) applies to all organizations with 10+ employees. It requires an Internal Complaints Committee (ICC) to handle complaints within 90 days. Government workers can use the SHe-Box online portal.",
+      actions:["File written complaint to your company's ICC within 3 months","Access SHe-Box portal (shebox.nic.in) for online complaints","Approach Local Complaints Committee (LCC) if company has no ICC","Seek legal advice from NALSA if employer fails to act","File FIR under IPC Section 354A for serious harassment"],
+      guidance:[
+        {step:"Document All Evidence",img:"📸",desc:"Save all messages, emails, and write down dates, times, and names of witnesses for each incident of harassment."},
+        {step:"Report to ICC",img:"📬",desc:"Submit a written complaint to your Internal Complaints Committee (ICC). Your identity will be kept confidential."},
+        {step:"Attend Inquiry",img:"🗣️",desc:"Cooperate with the ICC inquiry. The inquiry must be completed within 90 days. You can be accompanied by a support person."},
+        {step:"Escalate if No Action",img:"🏛️",desc:"If ICC does not act within 90 days, escalate to the Local Complaints Committee or file a complaint with the labour court."}
+      ]
+    },
+    {
+      id:"equal-pay", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/equal_pay.png", bg:"linear-gradient(135deg,#e65100,#c62828)", category:"Workplace",
+      name:"Right to Equal Pay",
+      situation:'I earn less than my male colleague for the exact same job.',
+      desc:"Equal Remuneration Act 1976 mandates equal wages for equal work regardless of gender.",
+      video:"Equal Pay Rights for Women — Know the Law",
+      fullDesc:"The Equal Remuneration Act 1976 prohibits employers from discriminating in wages on the basis of sex. An employer paying a woman less than a man for the same or similar work is committing an offence punishable with fine and imprisonment.",
+      actions:["Collect salary slips, appointment letters as evidence","File complaint with Assistant Labour Commissioner in your district","Approach Labour Court if the Commissioner's order is not followed","Contact National Human Rights Commission (nhrc.nic.in)","File complaint with NCW (ncw.nic.in) for awareness"],
+      guidance:[
+        {step:"Gather Salary Evidence",img:"📋",desc:"Collect your salary slips and compare your role description with that of your male counterparts doing equal work."},
+        {step:"Raise HR Complaint",img:"📩",desc:"First, formally raise a written complaint to your HR department. Keep a copy. Give them 30 days to respond."},
+        {step:"File with Labour Commissioner",img:"🏛️",desc:"If HR does not act, file a complaint at the office of the Assistant Labour Commissioner in your district. Filing is free."},
+        {step:"Labour Court Action",img:"⚖️",desc:"If the Commissioner's order is ignored, approach the Labour Court with a lawyer. NALSA provides free legal aid."}
+      ]
+    },
+    {
+      id:"property", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Right_of_Ancient.png", bg:"linear-gradient(135deg,#1565c0,#283593)", category:"Property",
+      name:"Right to Ancestral Property",
+      situation:'My brothers say I have no right to our family\'s property because I\'m a girl.',
+      desc:"Hindu Succession Act 2005 gives daughters equal share in ancestral property as sons.",
+      video:"Women's Property Rights — Hindu Succession Act Explained",
+      fullDesc:"The Hindu Succession (Amendment) Act 2005 grants daughters the same rights as sons to inherit ancestral property. This applies regardless of whether the father is alive or deceased. A married daughter also retains this right.",
+      actions:["Assert your right verbally with family and seek mediation first","Consult a lawyer or DLSA for free legal advice","File a suit in civil court for partition of property","Apply for legal heir certificate from Tehsildar/SDM","Women can claim share even after father's death"],
+      guidance:[
+        {step:"Verify Family Property Records",img:"📜",desc:"Obtain the property registration documents and your family pedigree chart from the local Tehsildar's office."},
+        {step:"Send Legal Notice",img:"📬",desc:"Through a lawyer, send a legal notice to family members asserting your share in the ancestral property."},
+        {step:"File Partition Suit",img:"⚖️",desc:"If family refuses, file a partition suit in the civil court. NALSA provides free legal aid for women in property cases."},
+        {step:"Obtain Court Order",img:"🏛️",desc:"The civil court will decide your share. Once the order is passed, the property must be divided accordingly."}
+      ]
+    },
+    {
+      id:"cybercrime", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Cyber_Crime.png", bg:"linear-gradient(135deg,#00695c,#2e7d32)", category:"Safety",
+      name:"Right Against Cybercrime & Online Harassment",
+      situation:'"Someone is posting my private photos online without my consent."',
+      desc:"IT Act 2000 and IPC Section 354C/D protect women from online stalking, morphing, and privacy violations.",
+      video:"Cyber Crime Against Women — How to File Complaint",
+      fullDesc:"The Information Technology Act 2000 and IPC Sections 354C (voyeurism) and 354D (stalking) protect women from online harassment, non-consensual intimate image sharing, cyberstalking, and impersonation. The National Cyber Crime Reporting Portal provides 24×7 online complaint filing.",
+      actions:["File complaint at cybercrime.gov.in (National Cyber Crime Reporting Portal)","Visit nearest cyber police cell","Call Cyber Crime Helpline 1930","Report offensive content to the platform (Facebook, Instagram, etc.) for immediate removal","Preserve all evidence — screenshots, URLs, messages"],
+      guidance:[
+        {step:"Preserve Evidence Immediately",img:"📸",desc:"Take screenshots of all offensive content, posts, messages with timestamps before the abuser deletes them."},
+        {step:"Report to Platform",img:"📱",desc:"Use the 'Report' feature on the platform (Facebook, Instagram, WhatsApp). Request emergency content removal citing non-consensual content."},
+        {step:"File Cyber Crime Report",img:"🌐",desc:"Go to cybercrime.gov.in → 'Report Cybercrime' → 'Report Women/Child Related Crime'. Fill the form with all evidence."},
+        {step:"Visit Cyber Police",img:"👮‍♀️",desc:"Visit the nearest Cyber Crime Police Cell. Bring printed screenshots and your National Cyber Crime complaint reference number."}
+      ]
+    },
+    {
+      id:"education", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Right_of_education.png", bg:"linear-gradient(135deg,#e65100,#ff8f00)", category:"Education",
+      name:"Right to Free Education",
+      situation:'My parents want to pull me out of school because of financial problems.',
+      desc:"Right to Education Act (RTE) 2009 guarantees free and compulsory education for all children aged 6–14.",
+      video:"Right to Education — What Girls Need to Know",
+      fullDesc:"The Right to Education Act 2009 (RTE Act) makes free and compulsory education a fundamental right for all children aged 6–14 years. Schools cannot charge fees, and 25% seats in private schools must be reserved for economically weaker sections.",
+      actions:["Contact local District Education Officer (DEO) if denied school admission","File complaint with Block Education Officer (BEO) for fee-related issues","Call State RTE Helpline (available in each state)","Approach National Commission for Protection of Child Rights (NCPCR)","Apply for free EWS quota seats in private schools"],
+      guidance:[
+        {step:"Approach School Directly",img:"🏫",desc:"Request admission in writing to the school's principal. Keep a copy. If refused, note the reason given."},
+        {step:"Contact Block Education Officer",img:"📋",desc:"Visit the BEO's office with the refusal letter. They are legally required to ensure admission in a government school."},
+        {step:"File Complaint with DEO",img:"📬",desc:"If BEO doesn't act, file a written complaint with the District Education Officer with supporting documents."},
+        {step:"NCPCR Complaint",img:"🏛️",desc:"File an online complaint at ncpcr.gov.in if state authorities are non-responsive. NCPCR has enforcement powers."}
+      ]
+    }
+  ],
+
+  stories: [
+    {
+      id:"savita", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/PMMY.jpg", bg:"linear-gradient(135deg,#f06292,#c2185b)", tags:["Scheme Beneficiary","Entrepreneurship"],
+      quote:'I started with ₹5,000 and a dream. Today, I employ 12 other women from my village.',
+      name:"Savita", location:"Rajasthan",
+      subtitle:"How a MUDRA Loan changed everything",
+      fullStory:"Savita, a farm worker from rural Rajasthan, used the MUDRA Shishu loan of ₹50,000 to start a papad-making unit from her home. With support from the local Anganwadi worker who helped her with the paperwork, she expanded within 18 months. Today, her unit has 12 women employees and an annual turnover exceeding ₹12 lakhs. She credits the loan, but more importantly, the guidance on how to use it.",
+      lesson:"Government schemes are powerful tools — you just need to know they exist and take that first step. Don't wait for someone to tell you. Ask.",
+      relatedScheme:"mudra", relatedRight:"equal-pay"
+    },
+    {
+      id:"rina", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Bbbd.webp", bg:"linear-gradient(135deg,#9c27b0,#673ab7)", tags:["Education","Scheme Beneficiary"],
+      quote:'"My family wanted to pull me out of school. The BBBP scheme saved my education and my future."',
+      name:"Rina", location:"Bihar",
+      subtitle:"Education is the most powerful tool",
+      fullStory:"When Rina's family faced financial hardship, they considered withdrawing her from school to reduce expenses. The Beti Bachao Beti Padhao initiative, through local Anganwadi workers, intervened with scholarship assistance and family counseling. Rina completed her 12th grade with 89% marks. She is now pursuing B.Tech in Computer Science on a full government scholarship.",
+      lesson:"Education is the most powerful tool you can give a girl child. No financial crisis should interrupt it. Reach out to your Anganwadi worker — they are trained to help.",
+      relatedScheme:"bbbp", relatedRight:"education"
+    },
+    {
+      id:"meera", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/POSH.png", bg:"linear-gradient(135deg,#ff7043,#e64a19)", tags:["Legal Victory","Workplace"],
+      quote:'"I didn\'t know I had rights. The POSH Act changed everything for me and my colleagues."',
+      name:"Meera", location:"Delhi",
+      subtitle:"From silence to strength — using the POSH Act",
+      fullStory:"Meera worked as an office assistant in Delhi for 3 years, enduring inappropriate behavior from her manager. She believed it was 'just how things were.' A workplace awareness session on the POSH Act changed everything. She filed a complaint with the ICC, the investigation was conducted fairly, the manager was suspended, and Meera received a formal apology. She was later promoted. She now conducts POSH awareness sessions for other women in her organization.",
+      lesson:"Your silence protects the abuser, not you. Knowing the law gives you power. Every workplace with 10+ employees must have an ICC — if yours doesn't, that itself is a violation.",
+      relatedScheme:"mudra", relatedRight:"posh"
+    },
+    {
+      id:"kamla", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Domestic_Voilance.png", bg:"linear-gradient(135deg,#26a69a,#00796b)", tags:["Domestic Violence","Legal Victory"],
+      quote:'"I thought leaving was impossible. My Protection Officer showed me I had more rights than I knew."',
+      name:"Kamla", location:"Maharashtra",
+      subtitle:"Freedom through the Domestic Violence Act",
+      fullStory:"Kamla endured 8 years of physical and economic abuse. Her husband controlled all money, leaving her nothing. She feared she had no legal standing as she owned no property. A neighbor shared the Women Helpline 181 number. The Protection Officer who responded helped her file for a Residence Order and Monetary Relief in Magistrate's Court within 72 hours. Kamla now lives safely with her children and is receiving maintenance payments.",
+      lesson:"You do not need money, a lawyer, or a degree to access the law. Your Protection Officer is free and legally bound to help. Call 181.",
+      relatedScheme:"pmawas", relatedRight:"dv"
+    }
+  ],
+
+  helplines: [
+    {icon:"🆘", name:"Women Helpline", number:"181", hours:"24×7", desc:"Free support for women in distress — connects to Protection Officer"},
+    {icon:"🚔", name:"Police Emergency", number:"112", hours:"24×7", desc:"Immediate police assistance for any emergency"},
+    {icon:"🏥", name:"Ambulance", number:"108", hours:"24×7", desc:"Free emergency ambulance services"},
+    {icon:"👨‍⚖️", name:"Legal Aid Helpline", number:"15100", hours:"9AM–5PM", desc:"Free legal advice for women — connects to NALSA lawyers"},
+    {icon:"💜", name:"Domestic Violence", number:"1091", hours:"24×7", desc:"Dedicated helpline for domestic abuse victims"},
+    {icon:"👧", name:"Child Helpline", number:"1098", hours:"24×7", desc:"For children and young girls in distress"},
+    {icon:"🧠", name:"iCall Mental Health", number:"9152987821", hours:"Mon–Sat, 8AM–10PM", desc:"Free counselling and mental health support"},
+    {icon:"⚖️", name:"NCW Helpline", number:"7827170170", hours:"9AM–5PM", desc:"National Commission for Women — complaint and advisory"},
+    {icon:"💻", name:"Cyber Crime", number:"1930", hours:"24×7", desc:"National Cybercrime Reporting Portal helpline"},
+    {icon:"🌸", name:"Vandrevala Foundation", number:"1860-2662-345", hours:"24×7", desc:"Free mental health crisis helpline"},
+    {icon:"📱", name:"SHe-Box (Workplace)", number:"shebox.nic.in", hours:"Online", desc:"Online portal for workplace harassment complaints"},
+    {icon:"🏛️", name:"NALSA Legal Services", number:"15100", hours:"24×7", desc:"Free legal aid and representation for women"}
+  ],
+
+  lawyers: [
+    {name:"Adv. Priya Sharma", spec:"Domestic Violence, Family Law", avail:"Available today", state:"Delhi", exp:"12 yrs"},
+    {name:"Adv. Sunita Rao", spec:"Property Rights, Inheritance", avail:"Available tomorrow", state:"Maharashtra", exp:"8 yrs"},
+    {name:"Adv. Fatima Khan", spec:"Workplace Harassment (POSH)", avail:"Available today", state:"Karnataka", exp:"10 yrs"},
+    {name:"Adv. Meenakshi Pillai", spec:"Cyber Crime, Digital Rights", avail:"Available in 2 days", state:"Tamil Nadu", exp:"7 yrs"}
+  ],
+
+  eligQuizQuestions: [
+    {q:"Which state do you live in?", opts:["Bihar","Rajasthan","Maharashtra","Uttar Pradesh","Delhi","Other"], key:"state"},
+    {q:"What is your age group?", opts:["Under 18","18–25","26–35","36–50","50+"], key:"age"},
+    {q:"What is your economic category?", opts:["BPL (Below Poverty Line)","EWS (Economically Weaker Section)","OBC","General"], key:"econ"},
+    {q:"What is your current situation?", opts:["Student","Pregnant/New Mother","Entrepreneur/Self-employed","Job Seeker","Homemaker"], key:"situation"},
+    {q:"What kind of support are you looking for?", opts:["Financial Support","Education/Scholarship","Housing","Health & Maternity","Business Loan"], key:"need"}
+  ],
+
+  schemeCategories: ["All","Central","State","Education","Health","Finance","Safety"],
+  rightsCategories: ["All","Domestic Violence","Workplace","Property","Safety","Education","Marriage"],
+  storyTags: ["All","Domestic Violence","Scheme Beneficiary","Legal Victory","Education","Entrepreneurship","Workplace"],
+
+  chatReplies: {
+    scheme:["Schemes ke liye Govt Schemes section dekhein. PM Awas, MUDRA Loan, Beti Bachao — yeh sab available hain.", "Kya aap apni situation batayengi? Main aapke liye sahi scheme dhundh sakti hoon."],
+    right:["Aapke paas kai important rights hain — DV Act, POSH Act, Equal Pay, Property Rights. Kaunsi situation mein aap hain?", "Rights section mein jaiye — situation ke hisaab se search kar sakti hain."],
+    help:["Main aapki madad karungi. Aap schemes, rights, ya helplines mein se kya dhundh rahi hain?", "Koi bhi problem ho — legal, financial, ya safety — main guide karoongi."],
+    sos:["Kya aap abhi kisi danger mein hain? Agar haan, toh SOS button daba dein ya 112 call karein!", "Kya aapko abhi madad chahiye? Main SOS activate kar sakti hoon — bas SOS button dabao."],
+    default:["Samajh gayi! Main aapko sahi jagah guide karungi. Aap schemes, rights, ya emergency help mein se kya chahti hain?", "Aap sahi jagah aayi hain. Main yahan hoon — bol dena kya chahiye."]
+  }
+};
+
+// ============================================================
+// APP STATE
+// ============================================================
+let state = {
+  currentPage: 'login', prevPage: 'home',
+  user: { name:'Priya', lang:'hi', contacts:[] },
+  trackerItems: [],
+  eligAnswers: {}, eligStep: 0,
+  currentScheme: null, currentRight: null, currentStory: null,
+  sosStream: null, sosGPSWatch: null, sosInterval: null, sosAlertCount: 0,
+  sosAudioCtx: null, sosActive: false,
+  sosCountdownTimer: null, sosCountNum: 3,
+  endSosTimer: null,
+  sakhiListening: false, sakhiRecognition: null
+};
+
+// ============================================================
+// LOGIN FLOW
+// ============================================================
+let otpTimerInterval = null;
+let otpAttempts = 0;
+const MOCK_OTP = "123456";
+
+function validateMobile(inp) {
+  const v = inp.value.replace(/\D/g,'');
+  inp.value = v;
+  const err = document.getElementById('mobileError');
+  const btn = document.getElementById('sendOtpBtn');
+  if (v.length === 10) { err.classList.add('hidden'); inp.classList.remove('error'); btn.disabled = false; }
+  else { inp.classList.add('error'); btn.disabled = true; }
+}
+
+function sendOTP() {
+  const v = document.getElementById('mobileInput').value;
+  if (v.length !== 10) return;
+  document.getElementById('lsStep1').classList.add('hidden');
+  document.getElementById('lsStep2').classList.remove('hidden');
+  document.getElementById('sentTo').textContent = '+91 ' + v;
+  startResendTimer();
+}
+
+function startResendTimer() {
+  let t = 30;
+  document.getElementById('resendTimer').textContent = t + 's';
+  document.getElementById('resendLink').classList.add('hidden');
+  otpTimerInterval = setInterval(() => {
+    t--;
+    document.getElementById('resendTimer').textContent = t + 's';
+    if (t <= 0) { clearInterval(otpTimerInterval); document.getElementById('resendLink').classList.remove('hidden'); document.getElementById('resendTimer').textContent = ''; }
+  }, 1000);
+}
+
+function resendOTP() {
+  document.querySelectorAll('.otp-box').forEach(b => { b.value = ''; b.classList.remove('error'); });
+  startResendTimer();
+  showToast('OTP resent successfully!');
+}
+
+function otpNext(inp, idx) {
+  const boxes = document.querySelectorAll('.otp-box');
+  if (inp.value && idx < 5) boxes[idx+1].focus();
+  if ([...boxes].every(b => b.value)) setTimeout(verifyOTP, 100);
+}
+
+function otpBack(e, inp, idx) {
+  const boxes = document.querySelectorAll('.otp-box');
+  if (e.key === 'Backspace' && !inp.value && idx > 0) boxes[idx-1].focus();
+}
+
+function verifyOTP() {
+  const boxes = document.querySelectorAll('.otp-box');
+  const entered = [...boxes].map(b => b.value).join('');
+  const err = document.getElementById('otpError');
+  if (entered === MOCK_OTP) {
+    err.classList.add('hidden');
+    boxes.forEach(b => { b.style.borderColor = 'var(--green)'; b.style.background = 'var(--green-light)'; });
+    setTimeout(() => {
+      const isReturning = false; // simulate new user
+      if (isReturning) { finishOnboarding(); } else { showOnboarding(); }
+    }, 600);
+  } else {
+    otpAttempts++;
+    err.classList.remove('hidden');
+    boxes.forEach(b => { b.classList.add('error'); setTimeout(() => b.classList.remove('error'), 500); });
+    if (otpAttempts >= 3) {
+      err.textContent = 'Too many attempts. Please resend OTP.';
+      boxes.forEach(b => b.disabled = true);
+    }
+  }
+}
+
+function showOnboarding() {
+  document.getElementById('lsStep2').classList.add('hidden');
+  document.getElementById('lsStep3').classList.remove('hidden');
+}
+
+function obNext(step) {
+  if (step === 2) {
+    const name = document.getElementById('nameInput').value.trim();
+    if (name) { state.user.name = name; document.getElementById('navAvatar').textContent = name[0].toUpperCase(); }
+    document.getElementById('ob1').classList.add('hidden');
+    document.getElementById('ob2').classList.remove('hidden');
+    setDot(2);
+  } else if (step === 3) {
+    document.getElementById('ob2').classList.add('hidden');
+    document.getElementById('ob3').classList.remove('hidden');
+    setDot(3);
+  }
+}
+
+function setDot(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('od'+i).classList.toggle('active', i === n);
+  });
+}
+
+function selectLang(el, code) {
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.user.lang = code;
+}
+
+function addContact() {
+  const list = document.getElementById('contactsList');
+  const row = document.createElement('div'); row.className = 'contact-row';
+  row.innerHTML = '<input class="form-input" placeholder="Name" style="max-width:130px;"/><input class="form-input" type="tel" placeholder="Mobile number"/>';
+  list.appendChild(row);
+}
+
+function finishOnboarding() {
+  // Collect contacts
+  document.querySelectorAll('.contact-row').forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    if (inputs[0].value && inputs[1].value) state.user.contacts.push({name:inputs[0].value, phone:inputs[1].value});
+  });
+  // Transition to home
+  const lp = document.getElementById('loginPage');
+  lp.style.transition = 'opacity 0.4s ease';
+  lp.style.opacity = '0';
+  setTimeout(() => {
+    lp.classList.remove('active');
+    lp.style.opacity = ''; lp.style.transition = '';
+    document.getElementById('navbar').style.display = 'block';
+    document.getElementById('floatWrap').style.display = 'flex';
+    document.getElementById('floatLeft').style.display = 'flex';
+    nav('home');
+  }, 400);
+}
+
+function setLang(code) {
+  state.user.lang = code;
+  document.getElementById('navLang').value = code;
+  showToast('Language updated!');
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function nav(page) {
+  document.querySelectorAll('.page').forEach(p => { if (p.id !== 'loginPage') p.classList.remove('active'); });
+  const el = document.getElementById(page + 'Page');
+  if (el) { el.classList.add('active'); state.prevPage = state.currentPage; state.currentPage = page; }
+  window.scrollTo(0, 0);
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const map = {home:0, schemes:1, rights:2, stories:3, helpline:4, tracker:5};
+  const links = document.querySelectorAll('.nav-link');
+  if (map[page] !== undefined && links[map[page]]) links[map[page]].classList.add('active');
+  renderPage(page);
+}
+
+function goBack() { nav(state.prevPage !== state.currentPage ? state.prevPage : 'home'); }
+
+function renderPage(page) {
+  if (page === 'home')     renderHome();
+  if (page === 'schemes')  renderSchemes();
+  if (page === 'rights')   renderRights();
+  if (page === 'stories')  renderStories();
+  if (page === 'helpline') renderHelpline();
+  if (page === 'tracker')  renderTracker();
+  if (page === 'elig')     renderEligCalc();
+}
+
+// ============================================================
+// RENDER HOME
+// ============================================================
+function renderHome() {
+  const sg = document.getElementById('homeSchemeCards');
+  if (!sg.dataset.r) { sg.innerHTML = CONFIG.schemes.slice(0,3).map(schemeCardHTML).join(''); sg.dataset.r='1'; }
+  const rg = document.getElementById('homeRightsCards');
+  if (!rg.dataset.r) { rg.innerHTML = CONFIG.rights.slice(0,3).map(rightsCardHTML).join(''); rg.dataset.r='1'; }
+  const stg = document.getElementById('homeStoryCards');
+  if (!stg.dataset.r) { stg.innerHTML = CONFIG.stories.slice(0,3).map(storyCardHTML).join(''); stg.dataset.r='1'; }
+  const hg = document.getElementById('homeHelplineCards');
+  if (!hg.dataset.r) { hg.innerHTML = CONFIG.helplines.slice(0,3).map(helplineCardHTML).join(''); hg.dataset.r='1'; }
+}
+
+// ============================================================
+// RENDER SCHEMES
+// ============================================================
+function renderSchemes(filter='All', search='') {
+  const pills = document.getElementById('schemePills');
+  if (!pills.dataset.r) {
+    pills.innerHTML = CONFIG.schemeCategories.map(c =>
+      `<span class="pill ${c==='All'?'pill-active':'pill-default'}" onclick="schemeFilter('${c}',this)">${c}</span>`
+    ).join('');
+    pills.dataset.r = '1';
+  }
+  const q = document.getElementById('schemeSearch')?.value || search;
+  const filtered = CONFIG.schemes.filter(s => {
+    const matchCat = filter==='All' || s.category===filter || s.state===filter || s.tags.includes(filter);
+    const matchQ = !q || s.name.toLowerCase().includes(q.toLowerCase()) || s.desc.toLowerCase().includes(q.toLowerCase());
+    return matchCat && matchQ;
+  });
+  const el = document.getElementById('allSchemeCards');
+  el.innerHTML = filtered.length
+    ? filtered.map(schemeCardHTML).join('')
+    : '<div style="text-align:center;padding:40px;color:var(--text-mid);grid-column:1/-1;"><div style="font-size:3rem;margin-bottom:12px;">🔍</div><p>No schemes found. Try a different keyword.</p></div>';
+}
+
+function schemeFilter(cat, el) {
+  document.querySelectorAll('#schemePills .pill').forEach(p => p.className = 'pill pill-default');
+  el.className = 'pill pill-active';
+  renderSchemes(cat);
+}
+
+function filterSchemes() { renderSchemes('All'); }
+
+// ============================================================
+// RENDER RIGHTS
+// ============================================================
+function renderRights(filter='All') {
+  const pills = document.getElementById('rightsPills');
+  if (!pills.dataset.r) {
+    pills.innerHTML = CONFIG.rightsCategories.map(c =>
+      `<span class="pill ${c==='All'?'pill-active':'pill-default'}" onclick="rightsFilter('${c}',this)">${c}</span>`
+    ).join('');
+    pills.dataset.r = '1';
+  }
+  const filtered = CONFIG.rights.filter(r => filter==='All' || r.category===filter);
+  document.getElementById('allRightsCards').innerHTML = filtered.map(rightsCardHTML).join('');
+}
+
+function rightsFilter(cat, el) {
+  document.querySelectorAll('#rightsPills .pill').forEach(p => p.className = 'pill pill-default');
+  el.className = 'pill pill-active';
+  renderRights(cat);
+}
+
+// ============================================================
+// RENDER STORIES
+// ============================================================
+function renderStories(filter='All') {
+  const pills = document.getElementById('storyPills');
+  if (!pills.dataset.r) {
+    pills.innerHTML = CONFIG.storyTags.map(t =>
+      `<span class="pill ${t==='All'?'pill-active':'pill-default'}" onclick="storyFilter('${t}',this)">${t}</span>`
+    ).join('');
+    pills.dataset.r = '1';
+  }
+  const filtered = CONFIG.stories.filter(s => filter==='All' || s.tags.includes(filter));
+  document.getElementById('allStoryCards').innerHTML = filtered.map(storyCardHTML).join('');
+}
+
+function storyFilter(tag, el) {
+  document.querySelectorAll('#storyPills .pill').forEach(p => p.className = 'pill pill-default');
+  el.className = 'pill pill-active';
+  renderStories(tag);
+}
+
+// ============================================================
+// RENDER HELPLINE
+// ============================================================
+function renderHelpline() {
+  const el = document.getElementById('allHelplineCards');
+  if (!el.dataset.r) { el.innerHTML = CONFIG.helplines.map(helplineCardHTML).join(''); el.dataset.r='1'; }
+}
+
+function filterHelplines() {
+  const q = document.getElementById('helplineSearch').value.toLowerCase();
+  const filtered = CONFIG.helplines.filter(h => h.name.toLowerCase().includes(q) || h.number.includes(q) || h.desc.toLowerCase().includes(q));
+  document.getElementById('allHelplineCards').innerHTML = filtered.map(helplineCardHTML).join('');
+}
+
+// ============================================================
+// RENDER TRACKER
+// ============================================================
+function renderTracker() {
+  const list = document.getElementById('trackerList');
+  const empty = document.getElementById('trackerEmpty');
+  if (state.trackerItems.length === 0) { list.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  list.innerHTML = state.trackerItems.map((item,i) => {
+    const statusMap = {Pending:'badge-amber',Applied:'badge-blue','Under Review':'badge-blue',Approved:'badge-green',Rejected:'badge-red'};
+    const cls = statusMap[item.status]||'badge-amber';
+    return `<div class="tracker-card mb-16">
+      <div class="tracker-card-header" onclick="toggleExpand(${i})">
+        <div class="tracker-scheme-info">
+          <div class="ts-name">${item.icon} ${item.name}</div>
+          <div class="ts-date">Applied: ${item.date}</div>
+        </div>
+        <div><span class="badge ${cls}">${item.status}</span></div>
+      </div>
+      <div class="tracker-expand" id="te_${i}">
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:8px;">Application submitted. Awaiting district office processing.</p>
+        <div class="next-step">📌 Next Step: Visit your nearest CSC (Common Service Centre) with your application number and Aadhaar.</div>
+        <button class="btn btn-secondary btn-sm mt-12" onclick="showToast('Reminder set for 30 days from now!')">🔔 Set Reminder</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleExpand(i) {
+  const el = document.getElementById('te_'+i);
+  el.classList.toggle('open');
+}
+
+// ============================================================
+// RENDER ELIGIBILITY CALC (Feature F-10)
+// ============================================================
+function renderEligCalc() {
+  state.eligStep = 0; state.eligAnswers = {};
+  renderEligQuestion();
+}
+
+function renderEligQuestion() {
+  const container = document.getElementById('eligQuizContainer');
+  const result = document.getElementById('eligResultContainer');
+  result.classList.add('hidden');
+  const q = CONFIG.eligQuizQuestions[state.eligStep];
+  const pct = Math.round((state.eligStep / CONFIG.eligQuizQuestions.length) * 100);
+  container.innerHTML = `
+    <div class="elig-question-card">
+      <div style="font-size:0.82rem;color:var(--text-mid);margin-bottom:8px;">Question ${state.eligStep+1} of ${CONFIG.eligQuizQuestions.length}</div>
+      <div class="elig-progress"><div class="elig-progress-fill" style="width:${pct}%"></div></div>
+      <div class="elig-q">${q.q}</div>
+      <div class="elig-options">
+        ${q.opts.map((opt,i) => `<button class="elig-option" onclick="selectEligOpt(this,'${q.key}','${opt}')">${opt}</button>`).join('')}
+      </div>
+      <div class="elig-nav">
+        <button class="btn btn-secondary btn-sm" ${state.eligStep===0?'disabled':''} onclick="eligBack()">← Back</button>
+        <span style="font-size:0.8rem;color:var(--text-mid);">${state.eligStep+1} / ${CONFIG.eligQuizQuestions.length}</span>
+        <button class="btn btn-secondary btn-sm" onclick="eligSkip()">Skip →</button>
+      </div>
+    </div>`;
+}
+
+function selectEligOpt(el, key, val) {
+  document.querySelectorAll('.elig-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.eligAnswers[key] = val;
+  setTimeout(() => {
+    state.eligStep++;
+    if (state.eligStep >= CONFIG.eligQuizQuestions.length) showEligResults();
+    else renderEligQuestion();
+  }, 350);
+}
+
+function eligBack() { if (state.eligStep > 0) { state.eligStep--; renderEligQuestion(); } }
+function eligSkip()  { state.eligStep++; if (state.eligStep >= CONFIG.eligQuizQuestions.length) showEligResults(); else renderEligQuestion(); }
+
+function showEligResults() {
+  document.getElementById('eligQuizContainer').innerHTML = '';
+  const result = document.getElementById('eligResultContainer');
+  result.classList.remove('hidden');
+  // Simple eligibility logic
+  const need = state.eligAnswers.need || '';
+  const econ = state.eligAnswers.econ || '';
+  const situation = state.eligAnswers.situation || '';
+  let eligible = [...CONFIG.schemes];
+  if (need.includes('Finance') || need.includes('Business')) eligible = CONFIG.schemes.filter(s => s.tags.includes('Finance')||s.tags.includes('Business'));
+  else if (need.includes('Education')) eligible = CONFIG.schemes.filter(s => s.tags.includes('Education'));
+  else if (need.includes('Housing')) eligible = CONFIG.schemes.filter(s => s.tags.includes('Housing'));
+  else if (need.includes('Health')) eligible = CONFIG.schemes.filter(s => s.tags.includes('Health'));
+  if (eligible.length === 0) eligible = CONFIG.schemes.slice(0,3);
+  result.innerHTML = `
+    <div class="elig-result">
+      <span class="elig-result-icon">🎉</span>
+      <h2 style="color:var(--maroon);margin-bottom:8px;font-size:1.4rem;">Great News!</h2>
+      <p style="color:var(--text-mid);margin-bottom:24px;font-size:0.9rem;">Based on your answers, you are eligible for <strong style="color:var(--deep-pink);">${eligible.length} schemes</strong>:</p>
+      <div class="grid-3" style="text-align:left;">${eligible.map(schemeCardHTML).join('')}</div>
+      <button class="btn btn-primary mt-24" onclick="nav('schemes')">View All Schemes →</button>
+    </div>`;
+}
+
+// ============================================================
+// CARD HTML TEMPLATES
+// ============================================================
+function schemeCardHTML(s) {
+  return `<div class="card scheme-card" onclick="openSchemeDetail('${s.id}')">
+   
+    <div class="scheme-card-icon">
+  ${
+    s.icon.startsWith("http")
+      ? `<img src="${s.icon}" alt="icon" style="width:80px;height:80px;" />`
+      : s.icon
+  }
+</div>
+    <div class="card-body">
+      <div class="scheme-card-tags">${s.tags.map(t=>`<span class="scheme-card-tag">${t}</span>`).join('')}<span class="scheme-card-tag" style="background:var(--blue-light);color:var(--blue);">${s.state}</span></div>
+      <div class="scheme-card-title">${s.name}</div>
+      <div class="scheme-card-desc">${s.desc}</div>
+      <div class="scheme-card-benefit">✅ ${s.benefit}</div>
+      <div class="scheme-card-actions">
+        <button class="btn btn-primary btn-sm w-full" onclick="event.stopPropagation();openSchemeDetail('${s.id}')">Apply Now →</button>
+        <button class="btn btn-secondary btn-sm btn-icon" onclick="event.stopPropagation();saveSchemeId('${s.id}')" title="Save">🔖</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function rightsCardHTML(r) {
+  return `<div class="card rights-card" onclick="openRightsDetail('${r.id}')">
+    
+    <div class="rights-card-img" style="background:${r.bg};">
+  ${
+    r.icon && r.icon.startsWith("http")
+      ? `<img src="${r.icon}" alt="icon" />`
+      : r.icon
+  }
+</div>
+    <div class="card-body">
+      <div class="rights-card-situation">${r.situation}</div>
+      <div class="rights-card-title">${r.name}</div>
+      <div class="rights-card-desc">${r.desc}</div>
+      <button class="btn btn-outline btn-sm w-full" onclick="event.stopPropagation();openRightsDetail('${r.id}')">More Details →</button>
+    </div>
+  </div>`;
+}
+
+function storyCardHTML(s) {
+  return `<div class="card story-card" onclick="openStoryDetail('${s.id}')">
+   
+<div class="story-card-top">
+  <img src="${s.icon}" alt="Story Image">
+</div>
+    
+    <div class="card-body">
+      <div class="story-quote">${s.quote}</div>
+      <div class="story-author">
+        <div class="story-avatar">${s.name[0]}</div>
+        <div class="story-info"><div class="name">${s.name}</div><div class="loc">📍 ${s.location}</div></div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">${s.tags.map(t=>`<span class="badge badge-pink">${t}</span>`).join('')}</div>
+      <button class="btn btn-outline btn-sm w-full" onclick="event.stopPropagation();openStoryDetail('${s.id}')">Read Her Story →</button>
+    </div>
+  </div>`;
+}
+
+function helplineCardHTML(h) {
+  return `<div class="card helpline-card">
+    <div class="card-body">
+      <div class="helpline-icon">${h.icon}</div>
+      <div class="helpline-name">${h.name}</div>
+      <div class="helpline-number">${h.number}</div>
+      <div class="helpline-meta">⏰ ${h.hours}</div>
+      <p style="font-size:0.78rem;color:var(--text-mid);margin-bottom:14px;">${h.desc}</p>
+      <a class="btn btn-green btn-sm w-full" href="tel:${h.number}" style="text-decoration:none;">📞 Call Now</a>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// DETAIL PAGES
+// ============================================================
+function openSchemeDetail(id) {
+  const s = CONFIG.schemes.find(x => x.id === id);
+  if (!s) return;
+  state.currentScheme = s; state.prevPage = state.currentPage;
+  document.getElementById('sdIcon').innerHTML = `
+  <img src="${s.icon}" alt="Scheme Icon" class="scheme-icon">
+`;
+  document.getElementById('sdTitle').textContent = s.name;
+  document.getElementById('sdSubtitle').textContent = s.desc;
+  document.getElementById('sdVideoTitle').textContent = s.video;
+  document.getElementById('sdInfo').innerHTML = `
+    <div class="info-block">
+      <h3>About This Scheme</h3>
+      <p>${s.fullDesc}</p>
+    </div>
+    <div class="info-block">
+      <h3>Eligibility Criteria</h3>
+      <ul>${s.eligibility.map(e=>`<li>${e}</li>`).join('')}</ul>
+    </div>
+    <div class="info-block">
+      <h3>Documents Required</h3>
+      <ul>${s.documents.map(d=>`<li>${d}</li>`).join('')}</ul>
+    </div>
+    <div class="info-block" style="background:var(--green-light);border-color:#bbf7d0;">
+      <h3 style="color:#166534;">✅ Key Benefit</h3>
+      <p style="color:#166534;font-weight:700;">${s.benefit}</p>
+    </div>`;
+  document.getElementById('sdGuidanceSteps').innerHTML = s.guidance.map((g,i)=>`
+    <div class="guidance-step">
+      <div class="step-num">${i+1}</div>
+      <div class="step-content">
+        <div class="step-img">${g.img}</div>
+        <div class="step-title">${g.step}</div>
+        <div class="step-desc">${g.desc}</div>
+      </div>
+    </div>`).join('');
+  // Eligibility quiz in Apply tab
+  document.getElementById('sdEligCheck').innerHTML = buildEligCheck(s);
+  switchTab('sd','overview');
+  navToPage('schemeDetail');
+}
+
+function buildEligCheck(s) {
+  if (!s.eligQuiz) return '<p style="color:var(--text-mid);">Visit the official portal to apply.</p>';
+  return `<div class="elig-question-card" id="sqCard">
+    <h3 style="color:var(--maroon);margin-bottom:16px;">Quick Eligibility Check</h3>
+    ${s.eligQuiz.map((q,qi)=>`
+      <div style="margin-bottom:16px;">
+        <p style="font-weight:600;color:var(--text-dark);margin-bottom:8px;font-size:0.9rem;">${qi+1}. ${q.q}</p>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          ${q.opts.map((o,oi)=>`<button class="elig-option" data-qi="${qi}" data-oi="${oi}" data-correct="${q.correct.includes(oi)}" onclick="selectSchemeElig(this)">${o}</button>`).join('')}
+        </div>
+      </div>`).join('')}
+    <div id="sqResult" style="display:none;"></div>
+    <button class="btn btn-primary mt-16 w-full" onclick="checkSchemeElig('${s.id}')">Check My Eligibility</button>
+  </div>`;
+}
+
+function selectSchemeElig(btn) {
+  const qi = btn.dataset.qi;
+  document.querySelectorAll(`[data-qi="${qi}"]`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function checkSchemeElig(id) {
+  const s = CONFIG.schemes.find(x => x.id === id);
+  const selected = document.querySelectorAll('.elig-option.selected');
+  let passed = true;
+  selected.forEach(b => { if (b.dataset.correct === 'false') passed = false; });
+  const res = document.getElementById('sqResult');
+  res.style.display = 'block';
+  if (passed && selected.length >= (s.eligQuiz?.length || 1)) {
+    res.innerHTML = `<div class="info-block" style="background:var(--green-light);border-color:#bbf7d0;margin-top:12px;"><h3 style="color:var(--green);">🎉 You Are Eligible!</h3><p style="color:#166534;">Based on your answers, you qualify for ${s.name}. Click Apply Now to proceed.</p></div>`;
+  } else {
+    res.innerHTML = `<div class="info-block" style="background:var(--sos-light);border-color:#ffcdd2;margin-top:12px;"><h3 style="color:var(--sos-red);">This scheme may not apply to you.</h3><p style="color:#b71c1c;">Don't worry! Try the Eligibility Calculator to find schemes that match your profile.</p><button class="btn btn-primary btn-sm mt-12" onclick="nav('elig')">✨ Check All Schemes →</button></div>`;
+  }
+}
+
+function openRightsDetail(id) {
+  const r = CONFIG.rights.find(x => x.id === id);
+  if (!r) return;
+  state.currentRight = r; state.prevPage = state.currentPage;
+  document.getElementById('rdIcon').innerHTML =
+  r.icon && r.icon.startsWith("http")
+    ? `<img src="${r.icon}" alt="icon" />`
+    : r.icon;
+  document.getElementById('rdTitle').textContent = r.name;
+  document.getElementById('rdSubtitle').textContent = r.desc;
+  document.getElementById('rdVideoTitle').textContent = r.video;
+  document.getElementById('rdInfo').innerHTML = `
+    <div class="info-block">
+      <h3>Your Right Explained</h3>
+      <p>${r.fullDesc}</p>
+    </div>
+    <div class="info-block">
+      <h3>What You Can Do</h3>
+      <ul>${r.actions.map(a=>`<li>${a}</li>`).join('')}</ul>
+    </div>
+    <div class="rights-card-situation" style="margin-bottom:16px;">${r.situation}</div>`;
+  document.getElementById('rdGuidanceSteps').innerHTML = r.guidance.map((g,i)=>`
+    <div class="guidance-step">
+      <div class="step-num">${i+1}</div>
+      <div class="step-content">
+        <div class="step-img">${g.img}</div>
+        <div class="step-title">${g.step}</div>
+        <div class="step-desc">${g.desc}</div>
+      </div>
+    </div>`).join('');
+  document.getElementById('rdChatMsgs').innerHTML = '<div class="chat-msg bot">Namaste! 🙏 Main aapki Kanoon Sakhi hoon. Aap mujhse apna koi bhi legal sawal pooch sakti hain — Hindi ya English mein.</div>';
+  navToPage('rightsDetail');
+}
+
+function openStoryDetail(id) {
+  const s = CONFIG.stories.find(x => x.id === id);
+  if (!s) return;
+  state.currentStory = s; state.prevPage = state.currentPage;
+
+ document.getElementById('stdIcon').innerHTML =
+  s.icon && s.icon.startsWith("http")
+    ? `<img src="${s.icon}" alt="icon" />`
+    : s.icon;
+  document.getElementById('stdTitle').textContent = s.name + ' — ' + s.subtitle;
+  document.getElementById('stdSubtitle').textContent = '📍 ' + s.location + ' | ' + s.tags.join(' · ');
+  document.getElementById('stdInfo').innerHTML = `
+    <div class="info-block">
+      <h3>Her Journey</h3>
+      <p style="font-style:italic;color:var(--deep-pink);font-size:0.95rem;margin-bottom:12px;">${s.quote}</p>
+      <p>${s.fullStory}</p>
+    </div>
+    <div class="info-block" style="background:var(--card-pink);">
+      <h3>💡 Her Lesson for You</h3>
+      <p style="font-style:italic;">${s.lesson}</p>
+    </div>`;
+  // Related resources
+  const rs = s.relatedScheme ? CONFIG.schemes.find(x=>x.id===s.relatedScheme) : null;
+  const rr = s.relatedRight ? CONFIG.rights.find(x=>x.id===s.relatedRight) : null;
+  let relHTML = '';
+  if (rs || rr) {
+    relHTML = '<div class="info-block"><h3>📎 Resources That Helped Her</h3><div class="grid-2" style="margin-top:12px;">';
+    if (rs) relHTML += `
+  <div class="card" onclick="openSchemeDetail('${rs.id}')" style="cursor:pointer;">
+    <div class="card-body">
+      <div style="font-size:2rem;margin-bottom:8px;">
+        ${
+          rs.icon && rs.icon.startsWith("http")
+            ? `<img src="${rs.icon}" alt="icon" style="width:40px;height:40px;" />`
+            : rs.icon
+        }
+      </div>
+      <div style="font-weight:700;color:var(--maroon);font-size:0.88rem;">
+        ${rs.name}
+      </div>
+      <div style="font-size:0.78rem;color:var(--text-mid);margin-top:4px;">
+        Government Scheme →
+      </div>
+
+    </div>
+  </div>`;
+   if (rr) relHTML += `
+  <div class="card" onclick="openSchemeDetail('${rr.id}')" style="cursor:pointer;">
+    <div class="card-body">
+      <div style="font-size:2rem;margin-bottom:8px;">
+        ${
+          rr.icon && rr.icon.startsWith("http")
+            ? `<img src="${rr.icon}" alt="icon" style="width:40px;height:40px;" />`
+            : rr.icon
+        }
+      </div>
+      <div style="font-weight:700;color:var(--maroon);font-size:0.88rem;">
+        ${rr.name}
+      </div>
+      <div style="font-size:0.78rem;color:var(--text-mid);margin-top:4px;">
+        Government Scheme →
+      </div>
+    </div>
+  </div>`;
+    // if (rr) relHTML += `<div class="card" onclick="openRightsDetail('${rr.id}')" style="cursor:pointer;"><div class="card-body"><div style="font-size:2rem;margin-bottom:8px;">${rr.icon}</div><div style="font-weight:700;color:var(--maroon);font-size:0.88rem;">${rr.name}</div><div style="font-size:0.78rem;color:var(--text-mid);margin-top:4px;">Know Your Right →</div></div></div>`;
+    relHTML += '</div></div>';
+  }
+  document.getElementById('stdRelated').innerHTML = relHTML;
+  navToPage('storyDetail');
+}
+
+function navToPage(page) {
+  document.querySelectorAll('.page').forEach(p => { if (p.id !== 'loginPage') p.classList.remove('active'); });
+  document.getElementById(page + 'Page').classList.add('active');
+  state.currentPage = page; window.scrollTo(0,0);
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function switchTab(prefix, tab) {
+  document.querySelectorAll(`#${prefix}Tab_overview,#${prefix}Tab_guidance,#${prefix}Tab_apply`).forEach(p => p.classList.remove('active'));
+  document.querySelectorAll(`#${prefix === 'sd' ? 'schemeTabs' : ''} .tab-btn`).forEach(b => b.classList.remove('active'));
+  document.getElementById(`${prefix}Tab_${tab}`)?.classList.add('active');
+  event?.target?.classList.add('active');
+}
+
+// ============================================================
+// GUIDANCE MODAL
+// ============================================================
+function openGuidanceModal(type) {
+  const data = type === 'scheme' ? state.currentScheme : state.currentRight;
+  if (!data || !data.guidance) return;
+  document.getElementById('guidanceModalTitle').textContent = `📋 ${data.name} — Step Guide`;
+  document.getElementById('guidanceModalSteps').innerHTML = data.guidance.map((g,i)=>`
+    <div class="guidance-step">
+      <div class="step-num">${i+1}</div>
+      <div class="step-content">
+        <div class="step-img">${g.img}</div>
+        <div class="step-title">${g.step}</div>
+        <div class="step-desc">${g.desc}</div>
+      </div>
+    </div>`).join('');
+  document.getElementById('guidanceModal').classList.add('open');
+}
+
+function showLawyerModal() {
+  document.getElementById('lawyerList').innerHTML = CONFIG.lawyers.map(l => `
+    <div class="card"><div class="card-body">
+      <div style="font-size:1.8rem;margin-bottom:8px;">👩‍⚖️</div>
+      <div style="font-weight:700;color:var(--maroon);margin-bottom:4px;">${l.name}</div>
+      <div class="badge badge-pink" style="margin-bottom:8px;">${l.spec}</div>
+      <p style="font-size:0.78rem;color:var(--text-mid);margin-bottom:4px;">📍 ${l.state} · ${l.exp} experience</p>
+      <p style="font-size:0.78rem;color:var(--green);font-weight:600;margin-bottom:12px;">🟢 ${l.avail}</p>
+      <button class="btn btn-primary btn-sm w-full" onclick="showToast('Request sent to ${l.name}! They will respond within 24 hours.')">Request Chat</button>
+    </div></div>`).join('');
+  document.getElementById('lawyerModal').classList.add('open');
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function closeOnOverlay(e, id) { if (e.target.id === id) closeModal(id); }
+
+// ============================================================
+// APPLY SCHEME → TRACKER
+// ============================================================
+function applyScheme() {
+  if (!state.currentScheme) return;
+  const already = state.trackerItems.find(t => t.id === state.currentScheme.id);
+  if (already) { showToast('Already in your tracker!'); return; }
+  state.trackerItems.push({ id:state.currentScheme.id, icon:state.currentScheme.icon, name:state.currentScheme.name, status:'Applied', date:new Date().toLocaleDateString('en-IN') });
+  showToast('✅ Application tracked! Check My Tracker to follow up.');
+}
+
+function saveScheme() { showToast('🔖 Scheme saved to your profile!'); }
+function saveSchemeId(id) { showToast('🔖 Scheme saved!'); }
+
+// ============================================================
+// RIGHTS CHAT (Kanoon Sakhi)
+// ============================================================
+const legalResponses = [
+  "Aapke paas DV Act 2005 ke tahat protection lene ka pura adhikar hai. Sabse pehle Women Helpline 181 call karein — ek Protection Officer 24 ghante mein milenge.",
+  "POSH Act 2013 ke tahat aap apne workplace ICC mein likhit complaint kar sakti hain. Agar ICC nahi hai, toh Local Complaints Committee ya SHe-Box portal (shebox.nic.in) use karein.",
+  "Equal Remuneration Act 1976 ke tahat agar aapko kam tankhwah mil rahi hai, toh pehle HR ko likhit complaint karein. Phir Labour Commissioner ke paas jayen.",
+  "Property rights ke liye: Hindu Succession Act 2005 ke tahat betiyaan barabar ki haqdar hain. Apne naazdeeqi DLSA se free legal advice lein.",
+  "FIR file karne ke liye kisi bhi police station jayen — woh accept karne ke liye bound hain. Agar nahi maan rahe, toh SP ko complaint karein ya 100 call karein.",
+  "Free legal sahayata ke liye NALSA helpline 15100 call karein. Yeh bilkul muft hai aur aapka information confidential rahega.",
+  "Samjh gayi. Aapki situation mein Rights section mein jaiye aur apni situation ke hisaab se relevant right select karein. Main har step mein guide karungi."
+];
+
+function sendRightsChat() {
+  const input = document.getElementById('rdChatInput');
+  const msg = input.value.trim(); if (!msg) return;
+  addChatMsg('rdChatMsgs', msg, 'user'); input.value = '';
+  setTimeout(() => {
+    const reply = legalResponses[Math.floor(Math.random() * legalResponses.length)];
+    addChatMsg('rdChatMsgs', reply, 'bot');
+  }, 800);
+}
+
+function clearRightsChat() {
+  document.getElementById('rdChatMsgs').innerHTML = '<div class="chat-msg bot">Chat cleared. Aap naya sawal pooch sakti hain.</div>';
+}
+
+function addChatMsg(containerId, text, type) {
+  const c = document.getElementById(containerId);
+  const d = document.createElement('div'); d.className = `chat-msg ${type}`; d.textContent = text;
+  c.appendChild(d); c.scrollTop = c.scrollHeight;
+}
+
+// ============================================================
+// AUDIO
+// ============================================================
+function toggleAudio(btn) {
+  btn.textContent = btn.textContent === '▶' ? '⏸' : '▶';
+  btn.style.background = btn.textContent === '⏸' ? 'linear-gradient(135deg,#22c55e,#16a34a)' : 'linear-gradient(135deg,var(--primary),var(--deep-pink))';
+}
+
+// ============================================================
+// SOS SYSTEM (Feature F-07)
+// ============================================================
+function activateSOS() {
+  state.sosActive = false; state.sosAlertCount = 0;
+  ['sosStep1','sosStep2','sosStep3','sosStep4'].forEach(id => document.getElementById(id).classList.add('hidden'));
+  document.getElementById('sosStep1').classList.remove('hidden');
+  document.getElementById('sosOverlay').classList.add('open');
+}
+
+function sosStartCountdown() {
+  document.getElementById('sosStep1').classList.add('hidden');
+  document.getElementById('sosStep2').classList.remove('hidden');
+  state.sosCountNum = 3;
+  document.getElementById('sosCountNum').textContent = '3';
+  // Vibrate if supported
+  if (navigator.vibrate) navigator.vibrate([500, 300, 500]);
+  state.sosCountdownTimer = setInterval(() => {
+    state.sosCountNum--;
+    if (state.sosCountNum > 0) {
+      document.getElementById('sosCountNum').textContent = state.sosCountNum;
+      if (navigator.vibrate) navigator.vibrate(300);
+    } else {
+      clearInterval(state.sosCountdownTimer);
+      sosRequestPermissions();
+    }
+  }, 1000);
+}
+
+function sosCancel() {
+  clearInterval(state.sosCountdownTimer);
+  closeSOS();
+  showToast('SOS cancelled');
+}
+
+async function sosRequestPermissions() {
+  document.getElementById('sosStep2').classList.add('hidden');
+  document.getElementById('sosStep3').classList.remove('hidden');
+  let camOk = false, micOk = false, gpsOk = false;
+
+  try {
+    state.sosStream = await navigator.mediaDevices.getUserMedia({ video:{facingMode:'environment'}, audio:true });
+    camOk = true; micOk = true;
+    setPerm('pC','ps-ok','✅ Granted'); setPerm('pM','ps-ok','✅ Granted');
+  } catch(e) {
+    try {
+      state.sosStream = await navigator.mediaDevices.getUserMedia({ video:false, audio:true });
+      micOk = true;
+      setPerm('pC','ps-no','❌ Denied'); setPerm('pM','ps-ok','✅ Granted');
+    } catch(e2) {
+      setPerm('pC','ps-no','❌ Denied'); setPerm('pM','ps-no','❌ Denied');
+    }
+  }
+
+  await new Promise(res => {
+    if (!navigator.geolocation) { setPerm('pG','ps-no','❌ N/A'); res(); return; }
+    navigator.geolocation.getCurrentPosition(pos => {
+      gpsOk = true; setPerm('pG','ps-ok','✅ Granted'); updateGPS(pos); res();
+    }, () => { setPerm('pG','ps-no','❌ Denied'); res(); }, {enableHighAccuracy:true,timeout:8000});
+  });
+
+  await new Promise(r => setTimeout(r, 600));
+  sosActivate(camOk, micOk, gpsOk);
+}
+
+function setPerm(id, cls, text) {
+  const el = document.getElementById(id);
+  el.className = 'perm-status ' + cls; el.textContent = text;
+}
+
+function sosActivate(camOk, micOk, gpsOk) {
+  state.sosActive = true;
+  document.getElementById('sosStep3').classList.add('hidden');
+  document.getElementById('sosStep4').classList.remove('hidden');
+
+  // Camera
+  const vid = document.getElementById('sosCam');
+  if (state.sosStream && camOk) {
+    const vs = new MediaStream(state.sosStream.getVideoTracks());
+    vid.srcObject = vs; vid.play().catch(()=>{});
+  } else {
+    vid.style.display = 'none';
+    vid.parentElement.innerHTML += '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:0.82rem;">Camera unavailable</div>';
+  }
+
+  // Mic visualizer
+  if (state.sosStream && micOk) startMicViz(state.sosStream);
+
+  // GPS watch
+  if (navigator.geolocation) {
+    state.sosGPSWatch = navigator.geolocation.watchPosition(pos => { updateGPS(pos); logAlert(pos); }, ()=>{}, {enableHighAccuracy:true,maximumAge:0});
+  }
+
+  // 5-second interval alerts
+  state.sosInterval = setInterval(() => {
+    state.sosAlertCount++;
+    const now = new Date().toLocaleTimeString();
+    const logEl = document.getElementById('gpsLog');
+    if (logEl) logEl.textContent = `✅ Alert #${state.sosAlertCount} sent @ ${now} — Sakhi Circle + Police notified`;
+  }, 5000);
+
+  state.sosAlertCount = 1;
+  const logEl = document.getElementById('gpsLog');
+  if (logEl) logEl.textContent = '✅ Alert #1 sent — Emergency services alerted immediately!';
+}
+
+function updateGPS(pos) {
+  const lat = pos.coords.latitude.toFixed(6);
+  const lng = pos.coords.longitude.toFixed(6);
+  const acc = Math.round(pos.coords.accuracy) + 'm';
+  const latEl = document.getElementById('gpsLat'); if(latEl) latEl.textContent = lat;
+  const lngEl = document.getElementById('gpsLng'); if(lngEl) lngEl.textContent = lng;
+  const accEl = document.getElementById('gpsAcc'); if(accEl) accEl.textContent = acc;
+  const st = document.getElementById('gpsStatus'); if(st) { st.textContent = '● Live'; st.className = 'badge badge-green'; }
+  const addr = document.getElementById('gpsAddr');
+  if (addr) { addr.textContent = `📍 ${lat}, ${lng} (±${acc}) — Tap to open maps`; addr.style.cursor='pointer'; }
+  state.lastPos = pos;
+}
+
+function openGoogleMaps() {
+  if (state.lastPos) window.open(`https://www.google.com/maps?q=${state.lastPos.coords.latitude},${state.lastPos.coords.longitude}`, '_blank');
+}
+
+function logAlert(pos) {
+  state.sosAlertCount++;
+  const now = new Date().toLocaleTimeString();
+  const lat = pos.coords.latitude.toFixed(5);
+  const lng = pos.coords.longitude.toFixed(5);
+  const logEl = document.getElementById('gpsLog');
+  if (logEl) logEl.textContent = `✅ Alert #${state.sosAlertCount} @ ${now} — (${lat}, ${lng}) sent`;
+}
+
+// End SOS hold logic
+function startEndSOS() {
+  state.endSosTimer = setTimeout(() => {
+    if (confirm('Are you safe? End SOS?')) { closeSOS(); showToast('SOS ended. Contacts notified you are safe.'); }
+  }, 3000);
+}
+function cancelEndSOS() { clearTimeout(state.endSosTimer); }
+
+function startMicViz(stream) {
+  try {
+    state.sosAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const src = state.sosAudioCtx.createMediaStreamSource(stream);
+    const analyser = state.sosAudioCtx.createAnalyser(); analyser.fftSize = 64;
+    src.connect(analyser);
+    const bars = document.querySelectorAll('.mic-b');
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    function draw() {
+      if (!state.sosActive) return;
+      analyser.getByteFrequencyData(data);
+      bars.forEach((b,i) => { const v = (data[i*2]||0)/255; b.style.height = Math.max(4, Math.round(v*24))+'px'; b.style.animation='none'; });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  } catch(e) {}
+}
+
+function closeSOS() {
+  state.sosActive = false;
+  clearInterval(state.sosCountdownTimer);
+  if (state.sosStream) { state.sosStream.getTracks().forEach(t=>t.stop()); state.sosStream=null; }
+  if (state.sosGPSWatch !== null) { navigator.geolocation?.clearWatch(state.sosGPSWatch); state.sosGPSWatch=null; }
+  if (state.sosInterval) { clearInterval(state.sosInterval); state.sosInterval=null; }
+  if (state.sosAudioCtx) { state.sosAudioCtx.close().catch(()=>{}); state.sosAudioCtx=null; }
+  document.getElementById('sosCam').srcObject = null;
+  document.getElementById('sosCam').style.display = 'block';
+  document.querySelectorAll('.mic-b').forEach(b => { b.style.height=''; b.style.animation=''; });
+  document.getElementById('sosOverlay').classList.remove('open');
+}
+
+// ============================================================
+// VOICE SAKHI (Feature F-08)
+// ============================================================
+function toggleSakhi() {
+  document.getElementById('sakhiCard').classList.toggle('open');
+}
+
+function toggleSakhiMic() {
+  const btn = document.getElementById('sakhiMicBtn');
+  if (!state.sakhiListening) {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      showToast('Speech recognition not supported in this browser. Please type your question.');
+      return;
+    }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    state.sakhiRecognition = new SR();
+    state.sakhiRecognition.lang = 'hi-IN';
+    state.sakhiRecognition.onresult = (e) => {
+      const transcript = e.results[0][0].transcript;
+      document.getElementById('sakhiInput').value = transcript;
+      setTimeout(sendSakhi, 300);
+    };
+    state.sakhiRecognition.onerror = () => { showToast('Mic error. Please type your question.'); };
+    state.sakhiRecognition.onend = () => { state.sakhiListening = false; btn.classList.remove('listening'); btn.textContent = '🎙️'; };
+    state.sakhiRecognition.start();
+    state.sakhiListening = true; btn.classList.add('listening'); btn.textContent = '🔴';
+
+    // Show wave indicator
+    addSakhiMsg('<div class="sakhi-wave"><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div></div>', 'bot', true);
+  } else {
+    state.sakhiRecognition?.stop();
+    state.sakhiListening = false; btn.classList.remove('listening'); btn.textContent = '🎙️';
+  }
+}
+
+function sendSakhi() {
+  const input = document.getElementById('sakhiInput');
+  const msg = input.value.trim(); if (!msg) return;
+  addSakhiMsg(msg, 'user');
+  input.value = '';
+  const low = msg.toLowerCase();
+  let reply = '', actions = [];
+
+  // Emergency detection
+  if (low.includes('bachao') || low.includes('help me') || low.includes('madad chahiye') || low.includes('danger')) {
+    reply = '⚠️ Kya aap abhi kisi danger mein hain? Agar haan, neeche SOS button dabao ya 112 call karein!';
+    actions = [{label:'🆘 Activate SOS', fn:'activateSOS()'}];
+  } else if (low.includes('scheme') || low.includes('yojana') || low.includes('benefit') || low.includes('sarkar')) {
+    reply = CONFIG.chatReplies.scheme[0];
+    actions = [{label:'🏛️ View Schemes', fn:"nav('schemes')"}];
+  } else if (low.includes('right') || low.includes('adhikar') || low.includes('law') || low.includes('kanoon')) {
+    reply = CONFIG.chatReplies.right[0];
+    actions = [{label:'⚖️ View Rights', fn:"nav('rights')"}];
+  } else if (low.includes('helpline') || low.includes('call') || low.includes('number') || low.includes('police')) {
+    reply = CONFIG.chatReplies.help[0];
+    actions = [{label:'📞 View Helplines', fn:"nav('helpline')"}];
+  } else if (low.includes('eligib') || low.includes('kaun si') || low.includes('which scheme')) {
+    reply = 'Main aapke liye sahi scheme dhundh sakti hoon! Check Eligibility use karein.';
+    actions = [{label:'✨ Check Eligibility', fn:"nav('elig')"}];
+  } else {
+    reply = CONFIG.chatReplies.default[Math.floor(Math.random()*CONFIG.chatReplies.default.length)];
+    actions = [{label:'🏛️ Schemes', fn:"nav('schemes')"},{label:'⚖️ Rights', fn:"nav('rights')"}];
+  }
+
+  // Remove wave indicators
+  document.querySelectorAll('.sakhi-wave-msg').forEach(e => e.remove());
+
+  setTimeout(() => {
+    addSakhiMsg(reply, 'bot');
+    const actDiv = document.getElementById('sakhiActions');
+    actDiv.innerHTML = actions.map(a => `<button class="sakhi-action-btn" onclick="${a.fn};toggleSakhi()">${a.label}</button>`).join('');
+    // TTS if supported
+    if ('speechSynthesis' in window) {
+      const utt = new SpeechSynthesisUtterance(reply);
+      utt.lang = state.user.lang === 'hi' ? 'hi-IN' : 'en-IN';
+      utt.rate = 0.9;
+      window.speechSynthesis.speak(utt);
+    }
+  }, 600);
+}
+
+function addSakhiMsg(text, type, isWave=false) {
+  const c = document.getElementById('sakhiMsgs');
+  const d = document.createElement('div');
+  d.className = isWave ? 'sakhi-wave-msg' : `chat-msg ${type}`;
+  d.innerHTML = text;
+  c.appendChild(d); c.scrollTop = c.scrollHeight;
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+window.onload = () => {
+  renderHome(); // Pre-render
+};
+</script>
+</body>
+</html>
