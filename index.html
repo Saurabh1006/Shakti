@@ -1244,7 +1244,7 @@ const CONFIG = {
       name:"PM Ujjwala Yojana",
       desc:"Free LPG gas connections to BPL women to eliminate health hazards of indoor smoke.",
       benefit:"Free LPG connection + first refill + regulator & stove",
-      state:"Central",
+      state:"State",
       video:"PM Ujjwala Yojana — Apply kaise karein",
       fullDesc:"PM Ujjwala Yojana (PMUY) provides free LPG connections to women from Below Poverty Line (BPL) households to reduce their dependence on traditional cooking fuels which cause health hazards due to smoke.",
       eligibility:["Woman from BPL household","Age 18 years or above","No existing LPG connection in the household","Listed in Socio Economic Caste Census (SECC) 2011"],
@@ -1260,6 +1260,175 @@ const CONFIG = {
         {q:"Does your household already have an LPG connection?", opts:["Yes","No"], correct:[1]}
       ]
     },
+    {
+      id:"Ladli Behna Yojana", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/logo-new.png", tags:["Health","Household"], category:"Health",
+      name:"Ladli Behna Yojana (MP)",
+      desc:"Monthly money for every woman.",
+      benefit:"Rs 1,250 per month directly to bank account",
+      state:"State",
+      video:"Ladli Behna Yojana — Apply kaise karein",
+      fullDesc:"Ladli Behna Yojana provides monthly financial assistance to women in need, aiming to improve their economic status and well-being.",
+      eligibility:["Women aged 21 to 60 years living in Madhya Pradesh.","Annual family income below ₹2.5 lakh","Not receiving benefits from any other government scheme","Must have a bank account for direct transfer"],
+      documents:["Aadhaar Card / Voter ID","Bank Account details"],
+      guidance:[
+        {step:"Register at nearest camp or online",img:"🏪",desc:""},
+        {step:" Give Aadhaar and bank details.",img:"📝",desc:""},
+        {step:"e-KYC verification done",img:"📁",desc:""},
+        {step:"Money comes every month on fixed date",img:"🚚",desc:"The financial assistance is credited to your bank account on a fixed date each month."}
+      ],
+      eligQuiz:[
+        {
+    q:"Are you a woman?",
+    opts:["Yes","No"],
+    correct:[0]
+  },
+  {
+    q:"What is your age?",
+    opts:["Below 21","21 to 60","Above 60"],
+    correct:[1]
+  },
+  {
+    q:"Do you live in Madhya Pradesh?",
+    opts:["Yes","No"],
+    correct:[0]
+  },
+  {
+    q:"Is your annual family income below ₹2.5 lakh?",
+    opts:["Yes","No","Not sure"],
+    correct:[0]
+  },
+  {
+    q:"Are you already receiving benefits from similar government schemes?",
+    opts:["Yes","No"],
+    correct:[1]
+  },
+  {
+    q:"Do you have an active bank account in your name?",
+    opts:["Yes","No"],
+    correct:[0]
+  }
+      ]
+    },
+    {
+  id:"Mukhyamantri Mahila Utkarsh Yojana", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/MukhyamantriMahilaUtkarshYojana.jpg", tags:["Women","Finance"], category:"Finance",
+  name:"Mukhyamantri Mahila Utkarsh Yojana (Gujarat)",
+  desc:"Monthly financial support for women in SHGs.",
+  benefit:"Rs. 1,000 per month per woman",
+  state:"State",
+  video:"Mahila Utkarsh Yojana Gujarat — Apply kaise karein",
+  fullDesc:"Mukhyamantri Mahila Utkarsh Yojana provides monthly financial assistance to women who are part of Self Help Groups in Gujarat, encouraging savings and economic independence.",
+  eligibility:["Women who are members of registered Self Help Groups in Gujarat","Must be a resident of Gujarat","Must have a bank account linked to SHG"],
+  documents:["SHG membership proof","Aadhaar Card","Bank account details"],
+  guidance:[
+    {step:"Join a registered Self Help Group",img:"👩‍👩‍👧‍👦",desc:""},
+    {step:"SHG leader registers your group",img:"📝",desc:""},
+    {step:"Link your bank account",img:"🏦",desc:""},
+    {step:"Receive monthly payment",img:"💰",desc:"Money is credited monthly to your bank account."}
+  ],
+  eligQuiz:[
+    {q:"Are you a woman?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you live in Gujarat?", opts:["Yes","No"], correct:[0]},
+    {q:"Are you a member of a registered Self Help Group (SHG)?", opts:["Yes","No","Not sure"], correct:[0]},
+    {q:"Do you have a bank account linked with SHG?", opts:["Yes","No"], correct:[0]}
+  ]
+},
+
+{
+  id:"Rythu Bandhu Women", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Rythu_Bandhu_Women.jpg", tags:["Agriculture","Women"], category:"Agriculture",
+  name:"Rythu Bandhu — Women Farmer Priority (Telangana)",
+  desc:"Farm investment support for women farmers.",
+  benefit:"Rs. 10,000 per acre per season",
+  state:"State",
+  video:"Rythu Bandhu Telangana women — Apply kaise karein",
+  fullDesc:"Rythu Bandhu provides financial assistance to farmers in Telangana, with priority to women farmers who own agricultural land, supporting crop investment needs.",
+  eligibility:["Women who own agricultural land in Telangana","Must be registered in land records","Must have a bank account"],
+  documents:["Pattadar passbook","Aadhaar Card","Bank account details"],
+  guidance:[
+    {step:"Register at Mee Seva or agriculture office",img:"🏢",desc:""},
+    {step:"Link Aadhaar with land record",img:"📝",desc:""},
+    {step:"Verify bank account",img:"🏦",desc:""},
+    {step:"Receive seasonal payment",img:"🌾",desc:"Money is transferred before each crop season."}
+  ],
+  eligQuiz:[
+    {q:"Are you a woman farmer?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you live in Telangana?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you own agricultural land?", opts:["Yes","No"], correct:[0]},
+    {q:"Is your land registered in official records?", opts:["Yes","No","Not sure"], correct:[0]},
+    {q:"Do you have a bank account?", opts:["Yes","No"], correct:[0]}
+  ]
+},
+{
+  id:"Mukhyamantri Vivah Shagun Yojana", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/MukhyamantriVivahShagun_Yojana.jpg", tags:["Marriage","Women"], category:"Social",
+  name:"Mukhyamantri Vivah Shagun Yojana (Haryana)",
+  desc:"Marriage financial support for girls.",
+  benefit:"Rs. 11,000 to Rs. 51,000 based on category",
+  state:"State",
+  video:"Vivah Shagun Yojana Haryana — Apply kaise karein",
+  fullDesc:"Mukhyamantri Vivah Shagun Yojana provides financial assistance to economically weaker families in Haryana for the marriage of their daughters, reducing financial burden.",
+  eligibility:["BPL families in Haryana","SC/ST or widow/divorced women's daughters eligible","Bride must be resident of Haryana"],
+  documents:["Aadhaar Card","BPL or caste certificate","Marriage invitation card","Bank account details"],
+  guidance:[
+    {step:"Apply on Antyodaya Saral portal or office",img:"💻",desc:""},
+    {step:"Fill daughter's details",img:"📝",desc:""},
+    {step:"Submit documents",img:"📁",desc:""},
+    {step:"Receive marriage benefit",img:"💰",desc:"Amount credited before or after marriage."}
+  ],
+  eligQuiz:[
+    {q:"Do you live in Haryana?", opts:["Yes","No"], correct:[0]},
+    {q:"Does your family belong to BPL category?", opts:["Yes","No","Not sure"], correct:[0]},
+    {q:"Do you belong to SC/ST or are you a widow/divorced woman's daughter?", opts:["Yes","No"], correct:[0]},
+    {q:"Is the benefit for a daughter's marriage?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you have a bank account?", opts:["Yes","No"], correct:[0]}
+  ]
+},
+{
+  id:"Majhi Kanya Bhagyashree", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Majhi_Kanya_Bhagyashree.png", tags:["Education","Girl Child"], category:"Education",
+  name:"Majhi Kanya Bhagyashree (Maharashtra)",
+  desc:"Financial support for girl child's education.",
+  benefit:"Up to Rs. 1 lakh in stages",
+  state:"State",
+  video:"Majhi Kanya Bhagyashree — Apply kaise karein",
+  fullDesc:"Majhi Kanya Bhagyashree scheme supports girl child education in Maharashtra by providing financial assistance at different education stages, ensuring continued schooling.",
+  eligibility:["Girl child born in Maharashtra","Family income below Rs. 7.5 lakh per year","Birth must be registered"],
+  documents:["Birth certificate","School ID","Aadhaar Card","Income certificate","Bank account details"],
+  guidance:[
+    {step:"Apply at Anganwadi or collector office",img:"🏢",desc:""},
+    {step:"Submit birth certificate within 6 months",img:"📝",desc:""},
+    {step:"Verification of documents",img:"📁",desc:""},
+    {step:"Receive staged payments",img:"🎓",desc:"Funds released at different education levels."}
+  ],
+  eligQuiz:[
+    {q:"Is the beneficiary a girl child?", opts:["Yes","No"], correct:[0]},
+    {q:"Was the girl child born in Maharashtra?", opts:["Yes","No"], correct:[0]},
+    {q:"Is your family income below Rs. 7.5 lakh?", opts:["Yes","No","Not sure"], correct:[0]},
+    {q:"Do you have a birth certificate?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you have a bank account?", opts:["Yes","No"], correct:[0]}
+  ]
+},
+{
+  id:"KALIA Yojana Women", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Kalia_scheme.jpg", tags:["Agriculture","Women"], category:"Agriculture",
+  name:"KALIA Yojana — Women Farmers (Odisha)",
+  desc:"Financial support for women farmers.",
+  benefit:"Rs. 4,000 per season",
+  state:"State",
+  video:"KALIA Yojana Odisha women — Apply kaise karein",
+  fullDesc:"KALIA Yojana provides financial assistance to small and marginal farmers in Odisha, with priority given to women farmers for direct income support.",
+  eligibility:["Women farmers in Odisha","Must be small or marginal farmer","Must own or cultivate land"],
+  documents:["Aadhaar Card","Bank account details","Land records or self-declaration"],
+  guidance:[
+    {step:"Register at Common Service Centre",img:"🏢",desc:""},
+    {step:"Link Aadhaar with bank account",img:"📝",desc:""},
+    {step:"Verification by agriculture officer",img:"📁",desc:""},
+    {step:"Receive seasonal payment",img:"🌾",desc:"Money is transferred directly to bank account."}
+  ],
+  eligQuiz:[
+    {q:"Are you a woman farmer?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you live in Odisha?", opts:["Yes","No"], correct:[0]},
+    {q:"Are you a small or marginal farmer?", opts:["Yes","No","Not sure"], correct:[0]},
+    {q:"Do you own or cultivate land?", opts:["Yes","No"], correct:[0]},
+    {q:"Do you have a bank account?", opts:["Yes","No"], correct:[0]}
+  ]
+},
     {
       id:"matrutva", icon:"https://raw.githubusercontent.com/Saurabh1006/Assets/main/Pradhan_Mantri_Matritva.png", tags:["Maternity","Health","Finance"], category:"Health",
       name:"Pradhan Mantri Matru Vandana Yojana",
